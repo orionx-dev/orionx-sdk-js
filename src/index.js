@@ -7,15 +7,15 @@ const Orionx = {
     secretApiKey: '',
     apiUrl: 'https://api2.orionx.io/graphql'
   },
-  config({apiKey, secretApiKey, apiUrl}) {
+  config({apiKey, secretKey, apiUrl}) {
     if (!apiKey) {
       throw new Error('Missing apiKey')
     }
-    if (!secretApiKey) {
+    if (!secretKey) {
       throw new Error('Missing secretApiKey')
     }
     this.credentials.apiKey = apiKey
-    this.credentials.secretApiKey = secretApiKey
+    this.credentials.secretKey = secretKey
     if (apiUrl) {
       this.apiUrl = apiUrl
     }

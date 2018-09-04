@@ -4,11 +4,11 @@ import rp from 'request-promise'
 export default async function({body, credentials}) {
   const timestamp = new Date().getTime() / 1000
 
-  const signature = generateSignature({body, timestamp, apiSecretKey: credentials.apiSecretKey})
+  const signature = generateSignature({body, timestamp, secretKey: credentials.secretKey})
 
   try {
     const response = await rp({
-      uri: apiUrl,
+      uri: credentials.apiUrl,
       method: 'POST',
       headers: {
         'X-ORIONX-TIMESTAMP': timestamp,

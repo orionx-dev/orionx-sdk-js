@@ -34,12 +34,12 @@ function _ref2() {
             signature = (0, _generateSignature.default)({
               body: body,
               timestamp: timestamp,
-              apiSecretKey: credentials.apiSecretKey
+              secretKey: credentials.secretKey
             });
             _context.prev = 3;
             _context.next = 6;
             return (0, _requestPromise.default)({
-              uri: apiUrl,
+              uri: credentials.apiUrl,
               method: 'POST',
               headers: {
                 'X-ORIONX-TIMESTAMP': timestamp,

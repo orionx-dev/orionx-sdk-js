@@ -23,19 +23,19 @@ var Orionx = {
   },
   config: function config(_ref) {
     var apiKey = _ref.apiKey,
-        secretApiKey = _ref.secretApiKey,
+        secretKey = _ref.secretKey,
         apiUrl = _ref.apiUrl;
 
     if (!apiKey) {
       throw new Error('Missing apiKey');
     }
 
-    if (!secretApiKey) {
+    if (!secretKey) {
       throw new Error('Missing secretApiKey');
     }
 
     this.credentials.apiKey = apiKey;
-    this.credentials.secretApiKey = secretApiKey;
+    this.credentials.secretKey = secretKey;
 
     if (apiUrl) {
       this.apiUrl = apiUrl;
