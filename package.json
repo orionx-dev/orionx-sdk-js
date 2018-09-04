@@ -1,0 +1,31 @@
+{
+  "name": "orionx-sdk",
+  "version": "1.0.0",
+  "description": "Help developers with Orionx integrations",
+  "main": "build/index.js",
+  "scripts": {
+    "dev": "watch 'npm run build' src",
+    "build": "babel  src -d build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "babel": {
+    "presets": ["@babel/env"],
+    "plugins": ["@babel/transform-arrow-functions"]
+  },
+  "keywords": ["orionx", "orion", "orionx-sdk"],
+  "author": "Orionx",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.5.0",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "graphql-tag": "^2.9.2",
+    "jssha": "^2.3.1"
+  }
+}
