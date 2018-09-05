@@ -3,7 +3,6 @@ import rp from 'request-promise'
 
 export default async function({body, credentials}) {
   const timestamp = new Date().getTime() / 1000
-
   const signature = generateSignature({body, timestamp, secretKey: credentials.secretKey})
 
   try {
@@ -19,14 +18,10 @@ export default async function({body, credentials}) {
     })
 
     const {data, errors} = JSON.parse(response)
-
-    if (errors) {
-      console.log(errors[0].message)
-      throw Error(errors[0].message)
-    }
+    if (errors) throw Error(errors[0].message)
 
     return data
-  } catch (e) {
-    throw e
+  } catch (error) {
+    throw error
   }
 }

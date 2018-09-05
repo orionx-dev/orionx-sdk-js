@@ -9,10 +9,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "babel": {
-    "presets": ["@babel/env"],
-    "plugins": ["@babel/transform-arrow-functions"]
+    "presets": [
+      "@babel/env"
+    ],
+    "plugins": [
+      "@babel/transform-arrow-functions"
+    ]
   },
-  "keywords": ["orionx", "orion", "orionx-sdk"],
+  "keywords": [
+    "orionx",
+    "orion",
+    "orionx-sdk"
+  ],
   "author": "Orionx",
   "license": "ISC",
   "devDependencies": {
@@ -20,12 +28,14 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "babel-preset-env": "^1.7.0",
+    "eslint-config-orionsoft": "^1.2.8",
     "jest": "^23.5.0",
     "watch": "^1.0.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "graphql-tag": "^2.9.2",
-    "jssha": "^2.3.1"
+    "jssha": "^2.3.1",
+    "request-promise": "^4.2.2"
   }
 }

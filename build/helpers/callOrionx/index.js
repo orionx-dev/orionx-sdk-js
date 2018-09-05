@@ -54,27 +54,26 @@ function _ref2() {
             _JSON$parse = JSON.parse(response), data = _JSON$parse.data, errors = _JSON$parse.errors;
 
             if (!errors) {
-              _context.next = 11;
+              _context.next = 10;
               break;
             }
 
-            console.log(errors[0].message);
             throw Error(errors[0].message);
 
-          case 11:
+          case 10:
             return _context.abrupt("return", data);
 
-          case 14:
-            _context.prev = 14;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](3);
             throw _context.t0;
 
-          case 17:
+          case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, this, [[3, 14]]);
+    }, _callee, this, [[3, 13]]);
   }));
   return _ref2.apply(this, arguments);
 }
