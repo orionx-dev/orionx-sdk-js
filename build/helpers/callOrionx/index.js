@@ -39,7 +39,7 @@ function _ref2() {
             _context.prev = 3;
             _context.next = 6;
             return (0, _requestPromise.default)({
-              uri: credentials.apiUrl,
+              uri: credentials.apiUri,
               method: 'POST',
               headers: {
                 'X-ORIONX-TIMESTAMP': timestamp,

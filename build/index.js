@@ -9,6 +9,10 @@ require("@babel/polyfill");
 
 var _callOrionx = _interopRequireDefault(require("./helpers/callOrionx"));
 
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _queries = _interopRequireDefault(require("./queries"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject2() {
@@ -44,15 +48,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var Orionx = _objectSpread({
   setCredentials: function setCredentials(_ref) {
     var apiKey = _ref.apiKey,
-        secret = _ref.secret,
-        secretUri = _ref.secretUri;
-    if (!secretUri) secretUri = 'https://api2.orionx.io/graphql';
+        secretKey = _ref.secretKey,
+        apiUri = _ref.apiUri;
+    if (!apiUri) apiUri = 'https://api2.orionx.io/graphql';
     if (!apiKey) throw new Error('Missing apiKey');
-    if (!secret) throw new Error('Missing secretApiKey');
+    if (!secretKey) throw new Error('Missing secretKey');
     this.credentials = {
       apiKey: apiKey,
-      secret: secret,
-      secretUri: secretUri
+      secretKey: secretKey,
+      apiUri: apiUri
     };
   },
   getCredentials: function getCredentials() {
@@ -85,10 +89,10 @@ var Orionx = _objectSpread({
               throw new Error('Missing Variables');
 
             case 5:
-              body = {
+              body = JSON.stringify({
                 query: query,
                 variables: variables
-              };
+              });
               _context.next = 8;
               return (0, _callOrionx.default)({
                 body: body,
@@ -114,19 +118,21 @@ var Orionx = _objectSpread({
     var _query = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee2(_ref3) {
-      var schema, params, query, variables;
+      var schema, variables, query;
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              schema = _ref3.schema, params = _ref3.params;
-              query = gql(_templateObject(), schema);
-              variables = params;
-              _context2.next = 5;
+              schema = _ref3.schema, variables = _ref3.variables;
+              query = (0, _graphqlTag.default)(_templateObject(), schema);
+              _context2.next = 4;
               return this.graphql({
                 query: query,
                 variables: variables
               });
+
+            case 4:
+              return _context2.abrupt("return", _context2.sent);
 
             case 5:
             case "end":
@@ -144,21 +150,20 @@ var Orionx = _objectSpread({
     var _mutation = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee3(_ref4) {
-      var schema, params, query, variables;
+      var schema, params, query;
       return regeneratorRuntime.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               schema = _ref4.schema, params = _ref4.params;
-              query = gql(_templateObject2(), schema);
-              variables = params;
-              _context3.next = 5;
+              query = (0, _graphqlTag.default)(_templateObject2(), schema);
+              _context3.next = 4;
               return this.graphql({
                 query: query,
                 variables: variables
               });
 
-            case 5:
+            case 4:
             case "end":
               return _context3.stop();
           }
@@ -170,7 +175,7 @@ var Orionx = _objectSpread({
       return _mutation.apply(this, arguments);
     };
   }()
-}, queries(params), mutations(params));
+}, _queries.default);
 
 var _default = Orionx;
 exports.default = _default;
