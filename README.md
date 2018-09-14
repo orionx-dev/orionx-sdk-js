@@ -1,8 +1,12 @@
 # Orionx SDK JS
 
-<a href="https://nodei.co/npm/@orionx/orionx-sdk/"><img src="https://nodei.co/npm/@orionx/orionx-sdk.png"></a>
-
-<p align="center">
+<p align="center>
+    <a href="https://nodei.co/npm/@orionx/orionx-sdk/">
+        <img src="https://nodei.co/npm/@orionx/orionx-sdk.png">
+    </a>
+</p>
+                                                              
+<p align="left">
     <a href="#backers" alt="Proyect MIT License">
         <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
     </a>
