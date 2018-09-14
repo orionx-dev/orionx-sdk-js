@@ -1,6 +1,6 @@
 # Orionx SDK JS
 
-[![NPM](https://nodei.co/npm/orionx-sdk.svg?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/aws-sdk/)
+<a href="https://nodei.co/npm/@orionx/orionx-sdk/"><img src="https://nodei.co/npm/@orionx/orionx-sdk.png"></a>
 
 <p align="center">
     <a href="#backers" alt="Proyect MIT License">
