@@ -1,11 +1,11 @@
-# Orionx SDK JS
+# Orionx SDK for JavaScript
 
 <p align="center>
     <a href="https://nodei.co/npm/@orionx/orionx-sdk/">
         <img src="https://nodei.co/npm/@orionx/orionx-sdk.png">
     </a>
 </p>
-                                                              
+
 <p align="left">
     <a href="#backers" alt="Proyect MIT License">
         <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
@@ -20,17 +20,7 @@
     </a>
 </p>
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+The official Orionx SDK for JavaScript
 
 ### Installing
 
@@ -39,13 +29,20 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-Give the example
+npm install @orionx/orionx-sdk --save
 ```
 
-And repeat
+Then we need to set up...
 
-```
-until finished
+```js
+//const Orionx = require('.......')
+import Orionx from '.........'
+
+Orionx.setCredentials({
+  apiKey: '<apiKey>',
+  secretKey: '<secretKey>',
+  apiUriL '<https://apiUri.com/graphql>'
+})
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
@@ -62,27 +59,9 @@ Explain what these tests test and why
 Give an example
 ```
 
-### And coding style tests
+## Opening Issues
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+If you encounter a bug with the Orionx SDK for JavaScript we would like to hear about it. Search the existing issues and try to make sure your problem doesn’t already exist before opening a new issue. It’s helpful if you include the version of the SDK, Node.js and OS you’re using.
 
 ## Versioning
 
