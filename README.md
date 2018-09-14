@@ -2,6 +2,8 @@
 
 [![NPM](https://nodei.co/npm/orionx-sdk.svg?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/aws-sdk/)
 
+[![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 One Paragraph of project description goes here
 
 ## Getting Started
