@@ -2,9 +2,19 @@
 
 [![NPM](https://nodei.co/npm/orionx-sdk.svg?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/aws-sdk/)
 
-[![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg)
-
-One Paragraph of project description goes here
+<p align="center">
+    <a href="#backers" alt="Proyect MIT License">
+        <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+    </a>
+    <a href="#version" alt="NPM Version">
+      <img src="https://img.shields.io/npm/v/@orionx/orionx-sdk.svg" />
+    </a>
+    <a href='https://coveralls.io/github/orionx-dev/orionx-sdk-js?branch=master'>
+      <img src='https://coveralls.io/repos/github/orionx-dev/orionx-sdk-js/badge.svg?branch=master' alt='Coverage Status' />     </a>
+    <a href="https://travis-ci.org" alt="Travis CI">
+      <img src="https://travis-ci.org/orionx-dev/orionx-sdk-js.svg?branch=master" alt="Travis Badge" />
+    </a>
+</p>
 
 ## Getting Started
 
