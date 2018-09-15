@@ -1,12 +1,14 @@
-# Orionx SDK for JavaScript
-
-<p align="center>
-    <a href="https://nodei.co/npm/@orionx/orionx-sdk/">
-        <img src="https://nodei.co/npm/@orionx/orionx-sdk.png">
-    </a>
+<p align="center">
+  <a href="https://orionx.com/">
+    <img alt="babel" src="https://orionx.com/logo.svg" width="546">
+  </a>
 </p>
 
-<p align="left">
+<p align="center">
+    The official Orionx SDK for JavaScript
+</p>
+
+<p align="center">
     <a href="#backers" alt="Proyect MIT License">
         <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
     </a>
@@ -20,7 +22,7 @@
     </a>
 </p>
 
-The official Orionx SDK for JavaScript
+
 
 ### Installing
 
