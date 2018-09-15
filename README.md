@@ -4,9 +4,9 @@
   </a>
 </p>
 
-<p align="center">
-    The official Orionx SDK for JavaScript
-</p>
+<h3 align="center">The official Orionx SDK for JavaScript</h3>
+
+---
 
 <p align="center">
     <a href="#backers" alt="Proyect MIT License">
