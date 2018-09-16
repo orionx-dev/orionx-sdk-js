@@ -18,8 +18,6 @@
     <a href="https://circleci.com" alt="Circle CI">
       <img src="https://circleci.com/gh/orionx-dev/orionx-sdk-js.svg?style=shield" alt="Circle CI Status Badge" />
     </a>
-    <a href='https://coveralls.io/github/orionx-dev/orionx-sdk-js?branch=master'>
-      <img src='https://coveralls.io/repos/github/orionx-dev/orionx-sdk-js/badge.svg?branch=master' alt='Coverage Status' />     </a>
 </p>
 
 ## Usage
