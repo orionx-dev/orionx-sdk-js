@@ -4,6 +4,7 @@ import rp from 'request-promise'
 export default async function({body, credentials}) {
   const timestamp = new Date().getTime() / 1000
   const signature = generateSignature({body, timestamp, secretKey: credentials.secretKey})
+
   try {
     const response = await rp({
       uri: credentials.apiUri,
@@ -16,10 +17,11 @@ export default async function({body, credentials}) {
       body
     })
     const {data, errors} = JSON.parse(response)
+
     if (errors) throw Error(errors[0].message)
 
     return data
   } catch (error) {
-    throw error
+    throw Error(error.message)
   }
 }

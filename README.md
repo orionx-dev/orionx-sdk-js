@@ -22,19 +22,15 @@
     </a>
 </p>
 
+## Usage
 
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+First you need to install it via npm.
 
 ```
 npm install @orionx/orionx-sdk --save
 ```
 
-Then we need to set up...
+## Code example
 
 ```js
 //const Orionx = require('.......')
@@ -45,42 +41,20 @@ Orionx.setCredentials({
   secretKey: '<secretKey>',
   apiUriL '<https://apiUri.com/graphql>'
 })
-```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+Orionx.market({code: 'LTCBTC'})
+      .then(function(market) {
+        console.log(market)
+      })
+      .catch(function(err) {
+        console.log(err)
+      })
 ```
 
 ## Opening Issues
 
 If you encounter a bug with the Orionx SDK for JavaScript we would like to hear about it. Search the existing issues and try to make sure your problem doesn’t already exist before opening a new issue. It’s helpful if you include the version of the SDK, Node.js and OS you’re using.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc

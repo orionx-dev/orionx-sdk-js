@@ -1,6 +1,6 @@
 {
   "name": "orionx-sdk",
-  "version": "1.1.0",
+  "version": "0.0.0",
   "description": "Help developers with Orionx integrations",
   "main": "build/index.js",
   "scripts": {
@@ -14,8 +14,13 @@
     "require": ["babel-register"]
   },
   "keywords": ["orionx", "orion", "orionx-sdk"],
-  "author": "Orionx",
-  "license": "ISC",
+  "author": "Orionx <contacto@orionx.com> (https://orionx.com/)",
+  "homepage": "https://github.com/orionx-dev/orionx-sdk-js",
+  "repository": {
+     "type" : "git",
+     "url" : "https://github.com/orionx-dev/orionx-sdk-js/"
+  },
+  "license": "MIT",
   "devDependencies": {
     "ava": "^0.25.0",
     "babel-cli": "^6.26.0",

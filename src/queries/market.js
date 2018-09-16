@@ -24,6 +24,5 @@ export default async function({code}) {
       }
     }
   `
-
   return await this.graphql({query, variables: {code}})
 }

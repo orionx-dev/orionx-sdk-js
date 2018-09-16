@@ -5,7 +5,7 @@ import queries from './queries'
 
 const Orionx = {
   setCredentials: function({apiKey, secretKey, apiUri}) {
-    if (!apiUri) apiUri = 'https://api2.orionx.io/graphql'
+    if (!apiUri) apiUri = 'https://ymxh3ju7n5.execute-api.us-east-1.amazonaws.com/client'
     if (!apiKey) throw new Error('Missing apiKey')
     if (!secretKey) throw new Error('Missing secretKey')
     this.credentials = {apiKey, secretKey, apiUri}
@@ -19,13 +19,13 @@ const Orionx = {
     const body = JSON.stringify({query, variables})
     return await callOrionx({body, credentials: this.credentials})
   },
-  async query({schema, variables}) {
+  query({schema, variables}) {
     const query = gql`query ${schema}`
-    return await this.graphql({query: query, variables})
+    return this.graphql({query: query, variables})
   },
-  async mutation({schema, params}) {
+  mutation({schema, params}) {
     const query = gql`mutation ${schema}`
-    await this.graphql({query, variables})
+    return this.graphql({query, variables})
   },
   ...queries
 }
