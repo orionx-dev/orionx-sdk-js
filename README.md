@@ -52,7 +52,7 @@ Orionx.market({code: 'LTCBTC'})
 
 ## Docs
 
-For further information about, visit our [Docs](http://docs.orionx.com)
+For further information about, visit our [Docs](http://docs.orionx.com/docs/getStarted/)
 
 ## Opening Issues
 
