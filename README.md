@@ -27,14 +27,13 @@
 First you need to install it via npm.
 
 ```
-npm install @orionx/orionx-sdk --save
+npm install orionx-sdk --save
 ```
 
 ## Code example
 
 ```js
-//const Orionx = require('.......')
-import Orionx from '.........'
+import Orionx from 'orionx-sdk'
 
 Orionx.setCredentials({
   apiKey: '<apiKey>',
@@ -51,9 +50,13 @@ Orionx.market({code: 'LTCBTC'})
       })
 ```
 
+## Docs
+
+For further information about, visit our [Docs](http://docs.orionx.com)
+
 ## Opening Issues
 
-If you encounter a bug with the Orionx SDK for JavaScript we would like to hear about it. Search the existing issues and try to make sure your problem doesn’t already exist before opening a new issue. It’s helpful if you include the version of the SDK, Node.js and OS you’re using.
+If you encounter a bug with the Orionx SDK for JavaScript we would like to hear about it. Search the [existing issues](https://github.com/orionx-dev/orionx-sdk-js/issues) and try to make sure your problem doesn’t already exist before opening a new issue. It’s helpful if you include the version of the SDK, Node.js and OS you’re using.
 
 ## License
 

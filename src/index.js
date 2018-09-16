@@ -1,11 +1,10 @@
-import '@babel/polyfill'
 import callOrionx from './helpers/callOrionx'
 import gql from 'graphql-tag'
 import queries from './queries'
 
 const Orionx = {
   setCredentials: function({apiKey, secretKey, apiUri}) {
-    if (!apiUri) apiUri = 'https://ymxh3ju7n5.execute-api.us-east-1.amazonaws.com/client'
+    if (!apiUri) apiUri = 'https://api2.orionx.io/graphql/'
     if (!apiKey) throw new Error('Missing apiKey')
     if (!secretKey) throw new Error('Missing secretKey')
     this.credentials = {apiKey, secretKey, apiUri}

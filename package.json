@@ -9,16 +9,26 @@
     "test": "ava --verbose --tap | tap-nyan"
   },
   "ava": {
-    "files": ["test/**/*.js"],
-    "sources": ["./lib/*"],
-    "require": ["babel-register"]
+    "files": [
+      "test/**/*.js"
+    ],
+    "sources": [
+      "./lib/*"
+    ],
+    "require": [
+      "babel-register"
+    ]
   },
-  "keywords": ["orionx", "orion", "orionx-sdk"],
+  "keywords": [
+    "orionx",
+    "orion",
+    "orionx-sdk"
+  ],
   "author": "Orionx <contacto@orionx.com> (https://orionx.com/)",
   "homepage": "https://github.com/orionx-dev/orionx-sdk-js",
   "repository": {
-     "type" : "git",
-     "url" : "https://github.com/orionx-dev/orionx-sdk-js/"
+    "type": "git",
+    "url": "https://github.com/orionx-dev/orionx-sdk-js/"
   },
   "license": "MIT",
   "devDependencies": {
@@ -43,7 +53,6 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
     "graphql-tag": "^2.9.2",
     "jssha": "^2.3.1",
     "request-promise": "^4.2.2"

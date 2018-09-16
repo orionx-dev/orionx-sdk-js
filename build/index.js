@@ -23,8 +23,6 @@ var _extends3 = _interopRequireDefault(_extends2);
 var _templateObject = (0, _taggedTemplateLiteral3.default)(['query ', ''], ['query ', '']),
     _templateObject2 = (0, _taggedTemplateLiteral3.default)(['mutation ', ''], ['mutation ', '']);
 
-require('@babel/polyfill');
-
 var _callOrionx = require('./helpers/callOrionx');
 
 var _callOrionx2 = _interopRequireDefault(_callOrionx);
@@ -45,7 +43,7 @@ var Orionx = (0, _extends3.default)({
         secretKey = _ref.secretKey,
         apiUri = _ref.apiUri;
 
-    if (!apiUri) apiUri = 'https://ymxh3ju7n5.execute-api.us-east-1.amazonaws.com/client';
+    if (!apiUri) apiUri = 'https://api2.orionx.io/graphql/';
     if (!apiKey) throw new Error('Missing apiKey');
     if (!secretKey) throw new Error('Missing secretKey');
     this.credentials = { apiKey: apiKey, secretKey: secretKey, apiUri: apiUri };
