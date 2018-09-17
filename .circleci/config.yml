@@ -33,4 +33,28 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test
+      - run: npm test
+
+  publish:
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+
+      - run: npm publish
+
+workflows:
+  version: 2
+  build-and-publish:
+    jobs:
+      - build
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
