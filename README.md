@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
     </a>
     <a href="#version" alt="NPM Version">
-      <img src="https://img.shields.io/npm/v/@orionx/orionx-sdk.svg" />
+      <img src="https://img.shields.io/npm/v/orionx-sdk.svg" />
     </a>
     <a href="https://circleci.com" alt="Circle CI">
       <img src="https://circleci.com/gh/orionx-dev/orionx-sdk-js.svg?style=shield" alt="Circle CI Status Badge" />
