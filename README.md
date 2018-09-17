@@ -28,9 +28,14 @@ First you need to install it via npm.
 npm install orionx-sdk --save
 ```
 
+Then you will need to get your credentials, follow [this tutorial](http://docs.orionx.com/docs/getStarted.html)
+
+After that we are ready to go
+
 ## Code example
 
 ```js
+// App.js
 import Orionx from 'orionx-sdk'
 
 Orionx.setCredentials({
@@ -39,6 +44,7 @@ Orionx.setCredentials({
   apiUriL '<https://apiUri.com/graphql>'
 })
 
+// And then use this in any Component.js
 Orionx.market({code: 'LTCBTC'})
       .then(function(market) {
         console.log(market)
@@ -47,6 +53,32 @@ Orionx.market({code: 'LTCBTC'})
         console.log(err)
       })
 ```
+
+## Methods
+
+### me
+
+The me() method returns yours user data.
+
+```js
+Orionx.me()
+```
+
+---
+
+### market
+
+The market() method returns the info of a specified market.
+
+```js
+Orionx.market({code: ':marketCode'})
+```
+
+#### Params
+
+**code:** Market code
+
+---
 
 ## Docs
 
