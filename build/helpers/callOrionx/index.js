@@ -50,29 +50,31 @@ exports.default = function () {
 
           case 5:
             response = _context.sent;
+
+            console.log(response);
             _JSON$parse = JSON.parse(response), data = _JSON$parse.data, errors = _JSON$parse.errors;
 
             if (!errors) {
-              _context.next = 9;
+              _context.next = 10;
               break;
             }
 
             throw Error(errors[0].message);
 
-          case 9:
+          case 10:
             return _context.abrupt('return', data);
 
-          case 12:
-            _context.prev = 12;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context['catch'](2);
             throw Error(_context.t0.message);
 
-          case 15:
+          case 16:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this, [[2, 12]]);
+    }, _callee, this, [[2, 13]]);
   }));
 
   return function (_x) {

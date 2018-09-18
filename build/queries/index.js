@@ -12,6 +12,10 @@ var _market = require('./market');
 
 var _market2 = _interopRequireDefault(_market);
 
+var _markets = require('./markets');
+
+var _markets2 = _interopRequireDefault(_markets);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
