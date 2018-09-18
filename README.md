@@ -61,7 +61,7 @@ Orionx.market({code: 'LTCBTC'})
 The `me()` method returns yours user data.
 
 ```js
-Orionx.me()
+await Orionx.me()
 ```
 
 ---
@@ -71,12 +71,22 @@ Orionx.me()
 The `market()` method returns the info of a specified market.
 
 ```js
-Orionx.market({code: ':marketCode'})
+await Orionx.market({code: ':marketCode'})
 ```
 
 #### Params
 
 **code:** Market code
+
+---
+
+### markets
+
+The `markets()` method returns the info of all the markets.
+
+```js
+await Orionx.markets()
+```
 
 ---
 
