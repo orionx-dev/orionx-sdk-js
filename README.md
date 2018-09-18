@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
     </a>
     <a href="#version" alt="NPM Version">
-      <img src="https://img.shields.io/npm/v/@orionx/orionx-sdk.svg" />
+      <img src="https://img.shields.io/npm/v/orionx-sdk.svg" />
     </a>
     <a href="https://circleci.com" alt="Circle CI">
       <img src="https://circleci.com/gh/orionx-dev/orionx-sdk-js.svg?style=shield" alt="Circle CI Status Badge" />
@@ -28,9 +28,14 @@ First you need to install it via npm.
 npm install orionx-sdk --save
 ```
 
+Then you will need to get your credentials, follow [this tutorial](http://docs.orionx.com/docs/getStarted.html)
+
+After that we are ready to go
+
 ## Code example
 
 ```js
+// App.js
 import Orionx from 'orionx-sdk'
 
 Orionx.setCredentials({
@@ -39,6 +44,7 @@ Orionx.setCredentials({
   apiUriL '<https://apiUri.com/graphql>'
 })
 
+// And then use this in any Component.js
 Orionx.market({code: 'LTCBTC'})
       .then(function(market) {
         console.log(market)
@@ -47,6 +53,42 @@ Orionx.market({code: 'LTCBTC'})
         console.log(err)
       })
 ```
+
+## Methods
+
+### me
+
+The `me()` method returns yours user data.
+
+```js
+await Orionx.me()
+```
+
+---
+
+### market
+
+The `market()` method returns the info of a specified market.
+
+```js
+await Orionx.market({code: ':marketCode'})
+```
+
+#### Params
+
+**code:** Market code
+
+---
+
+### markets
+
+The `markets()` method returns the info of all the markets.
+
+```js
+await Orionx.markets()
+```
+
+---
 
 ## Docs
 
