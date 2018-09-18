@@ -1,6 +1,5 @@
 import test from 'ava'
 import Orionx from '../src/index.js'
-import x from 'App'
 
 console.log(x)
 const errorText = param =>
