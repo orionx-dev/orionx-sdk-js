@@ -1,6 +1,6 @@
 {
   "name": "orionx-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Help developers with Orionx integrations",
   "main": "build/index.js",
   "scripts": {
