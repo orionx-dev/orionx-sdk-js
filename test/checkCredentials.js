@@ -1,7 +1,6 @@
 import test from 'ava'
 import Orionx from '../src/index.js'
 
-console.log(x)
 const errorText = param =>
   `Missing ${param}, try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method`
 
