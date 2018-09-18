@@ -33,7 +33,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: set -e
       - run: npm test
 
   publish:
