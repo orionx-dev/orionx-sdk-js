@@ -7,7 +7,7 @@ test('generate valid signature', t => {
   const body = `{
     foo: 'bar'
   }`
-  const timestamp = new Date('2018-09-14T01:07:55.348Z')
+  const timestamp = '2018-09-14T01:07:55.348Z'
   const secretKey = 'd3acc90185d8317a8028418d45ae7af1ae38d2086eaa74ac641305eb06d'
   const signature = generateSignature({body, timestamp, secretKey})
   t.is(
