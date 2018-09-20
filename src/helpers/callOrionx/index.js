@@ -16,7 +16,6 @@ export default async function({body, credentials}) {
       },
       body
     })
-    console.log(response)
     const {data, errors} = JSON.parse(response)
 
     if (errors) throw Error(errors[0].message)

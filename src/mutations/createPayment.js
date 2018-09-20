@@ -12,9 +12,6 @@ export default async function(variables) {
     title
   } = variables
 
-  // Validations
-  if (!amount) {
-  }
   const query = gql`
     mutation createPayment(
       $acceptedCurrenciesCodes: [ID]
