@@ -31,14 +31,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run:
-          name: Update PATH and Define Environment Variable at Runtime
-          command: |
-            echo 'export API_KEY=$NPM_TOKEN'
-            source $BASH_ENV
-
-      - run: npm test
+      #Run the tests
+      - run: ava --fail-fast --verbose
 
   publish:
     docker:
