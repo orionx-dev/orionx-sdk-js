@@ -1,5 +1,4 @@
 import callOrionx from './helpers/callOrionx'
-import gql from 'graphql-tag'
 import queries from './queries'
 import mutations from './mutations'
 
@@ -20,10 +19,10 @@ const Orionx = {
   },
   checkCredentials() {
     if (!this.credentials) throwCredentialsError('credentials')
-    const {apiKey, secretKey, apiUri} = this.credentials
+    const {apiUri, secretKey, apiKey} = this.credentials
+    if (!apiUri) throwCredentialsError('apiUri')
     if (!apiKey) throwCredentialsError('apiKey')
     if (!secretKey) throwCredentialsError('secretKey')
-    if (!apiUri) throwCredentialsError('apiUri')
   },
   async graphql({query, variables}) {
     this.checkCredentials()

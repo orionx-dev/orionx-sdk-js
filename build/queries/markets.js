@@ -25,7 +25,11 @@ var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+<<<<<<< HEAD
   var query, response;
+=======
+  var query;
+>>>>>>> 75632a256e507d46eb41d88181aba24c05e773f2
   return _regenerator2.default.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -35,10 +39,16 @@ exports.default = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.de
           return this.graphql({ query: query, variables: {} });
 
         case 3:
+<<<<<<< HEAD
           response = _context.sent;
           return _context.abrupt('return', response.markets);
 
         case 5:
+=======
+          return _context.abrupt('return', _context.sent);
+
+        case 4:
+>>>>>>> 75632a256e507d46eb41d88181aba24c05e773f2
         case 'end':
           return _context.stop();
       }

@@ -56,6 +56,7 @@ Orionx.market({code: 'LTCBTC'})
 
 ## Methods
 
+<<<<<<< HEAD
 ### createPayment
 
 The `createPayment()` creates a new payment and returns its data.
@@ -80,6 +81,8 @@ await Orionx.createPayment({
 
 ---
 
+=======
+>>>>>>> 75632a256e507d46eb41d88181aba24c05e773f2
 ### me
 
 The `me()` method returns yours user data.

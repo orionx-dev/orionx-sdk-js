@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _taggedTemplateLiteral2 = require('babel-runtime/helpers/taggedTemplateLiteral');
-
-var _taggedTemplateLiteral3 = _interopRequireDefault(_taggedTemplateLiteral2);
-
 var _regenerator = require('babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -20,16 +16,9 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _templateObject = (0, _taggedTemplateLiteral3.default)(['query ', ''], ['query ', '']),
-    _templateObject2 = (0, _taggedTemplateLiteral3.default)(['mutation ', ''], ['mutation ', '']);
-
 var _callOrionx = require('./helpers/callOrionx');
 
 var _callOrionx2 = _interopRequireDefault(_callOrionx);
-
-var _graphqlTag = require('graphql-tag');
-
-var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
 var _queries = require('./queries');
 
@@ -50,8 +39,13 @@ var Orionx = (0, _extends3.default)({
         secretKey = _ref.secretKey,
         apiUri = _ref.apiUri;
 
+<<<<<<< HEAD
     if (!apiKey) throwCredentialsError('apiKey');
     if (!secretKey) throwCredentialsError('secretKey');
+=======
+    if (!apiKey) throw new Error('Missing apiKey, try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method');
+    if (!secretKey) throw new Error('Missing secretKey, try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method');
+>>>>>>> 75632a256e507d46eb41d88181aba24c05e773f2
     if (!apiUri) apiUri = 'https://api2.orionx.io/graphql/';
     this.credentials = { apiKey: apiKey, secretKey: secretKey, apiUri: apiUri };
   },
@@ -59,6 +53,7 @@ var Orionx = (0, _extends3.default)({
     return this.credentials;
   },
   checkCredentials: function checkCredentials() {
+<<<<<<< HEAD
     if (!this.credentials) throwCredentialsError('credentials');
     var _credentials = this.credentials,
         apiKey = _credentials.apiKey,
@@ -68,6 +63,16 @@ var Orionx = (0, _extends3.default)({
     if (!apiKey) throwCredentialsError('apiKey');
     if (!secretKey) throwCredentialsError('secretKey');
     if (!apiUri) throwCredentialsError('apiUri');
+=======
+    var errorMsg = 'Missing credentials, try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method';
+    if (!this.credentials) throw new Error(errorMsg);
+    var _credentials = this.credentials,
+        apiUri = _credentials.apiUri,
+        secretKey = _credentials.secretKey,
+        apiKey = _credentials.apiKey;
+
+    if (!apiUri || !apiKey || !secretKey) throw new Error(errorMsg);
+>>>>>>> 75632a256e507d46eb41d88181aba24c05e773f2
   },
   graphql: function graphql(_ref2) {
     var _this = this;
@@ -112,20 +117,6 @@ var Orionx = (0, _extends3.default)({
         }
       }, _callee, _this);
     }))();
-  },
-  query: function query(_ref3) {
-    var schema = _ref3.schema,
-        variables = _ref3.variables;
-
-    var query = (0, _graphqlTag2.default)(_templateObject, schema);
-    return this.graphql({ query: query, variables: variables });
-  },
-  mutation: function mutation(_ref4) {
-    var schema = _ref4.schema,
-        params = _ref4.params;
-
-    var query = (0, _graphqlTag2.default)(_templateObject2, schema);
-    return this.graphql({ query: query, variables: variables });
   }
 }, _queries2.default, _mutations2.default);
 exports.default = Orionx;
