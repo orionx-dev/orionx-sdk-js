@@ -32,7 +32,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       #Run the tests
-      - run: ava --fail-fast --verbose
+      - run: npm circleci-test
 
   publish:
     docker:
