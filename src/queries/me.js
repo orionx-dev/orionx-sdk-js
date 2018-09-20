@@ -23,6 +23,6 @@ export default async function() {
       }
     }
   `
-
-  return await this.query({schema, variables: {}})
+  const response = await this.query({schema, variables: {}})
+  return response.me
 }

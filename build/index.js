@@ -35,21 +35,39 @@ var _queries = require('./queries');
 
 var _queries2 = _interopRequireDefault(_queries);
 
+var _mutations = require('./mutations');
+
+var _mutations2 = _interopRequireDefault(_mutations);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var throwCredentialsError = function throwCredentialsError(param) {
+  throw new Error('Missing ' + param + ', try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method');
+};
 var Orionx = (0, _extends3.default)({
   setCredentials: function setCredentials(_ref) {
     var apiKey = _ref.apiKey,
         secretKey = _ref.secretKey,
         apiUri = _ref.apiUri;
 
+    if (!apiKey) throwCredentialsError('apiKey');
+    if (!secretKey) throwCredentialsError('secretKey');
     if (!apiUri) apiUri = 'https://api2.orionx.io/graphql/';
-    if (!apiKey) throw new Error('Missing apiKey');
-    if (!secretKey) throw new Error('Missing secretKey');
     this.credentials = { apiKey: apiKey, secretKey: secretKey, apiUri: apiUri };
   },
   getCredentials: function getCredentials() {
     return this.credentials;
+  },
+  checkCredentials: function checkCredentials() {
+    if (!this.credentials) throwCredentialsError('credentials');
+    var _credentials = this.credentials,
+        apiKey = _credentials.apiKey,
+        secretKey = _credentials.secretKey,
+        apiUri = _credentials.apiUri;
+
+    if (!apiKey) throwCredentialsError('apiKey');
+    if (!secretKey) throwCredentialsError('secretKey');
+    if (!apiUri) throwCredentialsError('apiUri');
   },
   graphql: function graphql(_ref2) {
     var _this = this;
@@ -62,30 +80,32 @@ var Orionx = (0, _extends3.default)({
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              _this.checkCredentials();
+
               if (query) {
-                _context.next = 2;
+                _context.next = 3;
                 break;
               }
 
               throw new Error('Missing Query');
 
-            case 2:
+            case 3:
               if (variables) {
-                _context.next = 4;
+                _context.next = 5;
                 break;
               }
 
               throw new Error('Missing Variables');
 
-            case 4:
+            case 5:
               body = JSON.stringify({ query: query, variables: variables });
-              _context.next = 7;
+              _context.next = 8;
               return (0, _callOrionx2.default)({ body: body, credentials: _this.credentials });
 
-            case 7:
+            case 8:
               return _context.abrupt('return', _context.sent);
 
-            case 8:
+            case 9:
             case 'end':
               return _context.stop();
           }
@@ -107,5 +127,5 @@ var Orionx = (0, _extends3.default)({
     var query = (0, _graphqlTag2.default)(_templateObject2, schema);
     return this.graphql({ query: query, variables: variables });
   }
-}, _queries2.default);
+}, _queries2.default, _mutations2.default);
 exports.default = Orionx;

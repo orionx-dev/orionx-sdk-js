@@ -6,24 +6,15 @@
   "scripts": {
     "dev": "watch 'npm run build' src",
     "build": "babel  src -d build",
-    "test": "ava --verbose --tap | tap-nyan"
+    "pretest": "sh .env",
+    "test": "ava --verbose"
   },
   "ava": {
-    "files": [
-      "test/**/*.js"
-    ],
-    "sources": [
-      "./lib/*"
-    ],
-    "require": [
-      "babel-register"
-    ]
+    "files": ["test/**/*.js"],
+    "sources": ["./lib/*"],
+    "require": ["babel-register"]
   },
-  "keywords": [
-    "orionx",
-    "orion",
-    "orionx-sdk"
-  ],
+  "keywords": ["orionx", "orion", "orionx-sdk"],
   "author": "Orionx <contacto@orionx.com> (https://orionx.com/)",
   "homepage": "https://github.com/orionx-dev/orionx-sdk-js",
   "repository": {
@@ -44,6 +35,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.26.0",
+    "dotenv": "^6.0.0",
     "eslint": "^5.5.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
@@ -53,6 +45,7 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
+    "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "jssha": "^2.3.1",
     "request-promise": "^4.2.2"
