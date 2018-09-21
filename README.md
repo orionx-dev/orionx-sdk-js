@@ -73,9 +73,13 @@ await Orionx.createPayment({
 #### Params
 
 **acceptedCurrenciesCodes:** The coin codes that the buyer will be able to use as payment
+
 **amount** The price in mainCurrencyCode units
+
 **description** Some descriptive text
+
 **mainCurrencyCode** The coin that you will recieve
+
 **title** Some descriptive title
 
 ---
