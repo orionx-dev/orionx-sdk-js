@@ -31,9 +31,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
-      - run: npm test
+      #Run the tests
+      - run: npm run circleci-test
 
   publish:
     docker:
@@ -42,7 +41,8 @@ jobs:
       - checkout
 
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-
+      - run: echo "export API_KEY=$API_KEY"
+      - run: echo "export SECRET_KEY=$SECRET_KEY"
       - run: npm publish
 
 workflows:

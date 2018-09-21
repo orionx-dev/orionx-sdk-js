@@ -24,16 +24,28 @@ var _queries = require('./queries');
 
 var _queries2 = _interopRequireDefault(_queries);
 
+var _mutations = require('./mutations');
+
+var _mutations2 = _interopRequireDefault(_mutations);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var throwCredentialsError = function throwCredentialsError(param) {
+  throw new Error('Missing ' + param + ', try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method');
+};
 var Orionx = (0, _extends3.default)({
   setCredentials: function setCredentials(_ref) {
     var apiKey = _ref.apiKey,
         secretKey = _ref.secretKey,
         apiUri = _ref.apiUri;
 
+<<<<<<< HEAD
+    if (!apiKey) throwCredentialsError('apiKey');
+    if (!secretKey) throwCredentialsError('secretKey');
+=======
     if (!apiKey) throw new Error('Missing apiKey, try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method');
     if (!secretKey) throw new Error('Missing secretKey, try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method');
+>>>>>>> 75632a256e507d46eb41d88181aba24c05e773f2
     if (!apiUri) apiUri = 'https://api2.orionx.io/graphql/';
     this.credentials = { apiKey: apiKey, secretKey: secretKey, apiUri: apiUri };
   },
@@ -41,6 +53,17 @@ var Orionx = (0, _extends3.default)({
     return this.credentials;
   },
   checkCredentials: function checkCredentials() {
+<<<<<<< HEAD
+    if (!this.credentials) throwCredentialsError('credentials');
+    var _credentials = this.credentials,
+        apiKey = _credentials.apiKey,
+        secretKey = _credentials.secretKey,
+        apiUri = _credentials.apiUri;
+
+    if (!apiKey) throwCredentialsError('apiKey');
+    if (!secretKey) throwCredentialsError('secretKey');
+    if (!apiUri) throwCredentialsError('apiUri');
+=======
     var errorMsg = 'Missing credentials, try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method';
     if (!this.credentials) throw new Error(errorMsg);
     var _credentials = this.credentials,
@@ -49,6 +72,7 @@ var Orionx = (0, _extends3.default)({
         apiKey = _credentials.apiKey;
 
     if (!apiUri || !apiKey || !secretKey) throw new Error(errorMsg);
+>>>>>>> 75632a256e507d46eb41d88181aba24c05e773f2
   },
   graphql: function graphql(_ref2) {
     var _this = this;
@@ -94,5 +118,5 @@ var Orionx = (0, _extends3.default)({
       }, _callee, _this);
     }))();
   }
-}, _queries2.default);
+}, _queries2.default, _mutations2.default);
 exports.default = Orionx;

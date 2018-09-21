@@ -56,6 +56,33 @@ Orionx.market({code: 'LTCBTC'})
 
 ## Methods
 
+<<<<<<< HEAD
+### createPayment
+
+The `createPayment()` creates a new payment and returns its data.
+
+```js
+await Orionx.createPayment({
+  acceptedCurrenciesCodes: ['LTC', 'BTC'],
+  amount: 1000,
+  description: 'Testing...',
+  mainCurrencyCode: 'CLP',
+  title: 'Test'
+})
+```
+
+#### Params
+
+**acceptedCurrenciesCodes:** The coin codes that the buyer will be able to use as payment
+**amount** The price in mainCurrencyCode units
+**description** Some descriptive text
+**mainCurrencyCode** The coin that you will recieve
+**title** Some descriptive title
+
+---
+
+=======
+>>>>>>> 75632a256e507d46eb41d88181aba24c05e773f2
 ### me
 
 The `me()` method returns yours user data.

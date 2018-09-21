@@ -25,7 +25,7 @@ var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-  var schema;
+  var schema, response;
   return _regenerator2.default.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -35,9 +35,10 @@ exports.default = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.de
           return this.query({ schema: schema, variables: {} });
 
         case 3:
-          return _context.abrupt('return', _context.sent);
+          response = _context.sent;
+          return _context.abrupt('return', response.me);
 
-        case 4:
+        case 5:
         case 'end':
           return _context.stop();
       }

@@ -19,5 +19,6 @@ export default async function() {
       }
     }
   `
-  return await this.graphql({query, variables: {}})
+  const response = await this.graphql({query, variables: {}})
+  return response.markets
 }

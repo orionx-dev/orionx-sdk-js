@@ -4,6 +4,9 @@ import Orionx from '../src/index.js'
 const errorText = param =>
   `Missing ${param}, try with Orionx.setCredentials({apiKey: :apiKey, secretKey: :secretKey, apiUri: :apiUri}) method`
 
+test.beforeEach(t => {
+  Orionx.setCredentials({apiKey: 'apiKey', secretKey: 'secretKey', apiUri: 'apiUri'})
+})
 test('throws error without credentials', t => {
   delete Orionx.credentials
   const error = t.throws(() => {
@@ -14,7 +17,6 @@ test('throws error without credentials', t => {
 })
 
 test('throws error without apiKey', t => {
-  Orionx.credentials = {apiKey: 'apiKey', secretKey: 'secretKey', apiUri: 'apiUri'}
   delete Orionx.credentials.apiKey
   const error = t.throws(() => {
     Orionx.checkCredentials()
@@ -23,7 +25,6 @@ test('throws error without apiKey', t => {
 })
 
 test('throws error without secretKey', t => {
-  Orionx.credentials = {apiKey: 'apiKey', secretKey: 'secretKey', apiUri: 'apiUri'}
   delete Orionx.credentials.secretKey
   const error = t.throws(() => {
     Orionx.checkCredentials()
@@ -32,7 +33,6 @@ test('throws error without secretKey', t => {
 })
 
 test('throws error without apiUri', t => {
-  Orionx.credentials = {apiKey: 'apiKey', secretKey: 'secretKey', apiUri: 'apiUri'}
   delete Orionx.credentials.apiUri
   const error = t.throws(() => {
     Orionx.checkCredentials()

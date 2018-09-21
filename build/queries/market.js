@@ -27,19 +27,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(_ref2) {
     var code = _ref2.code;
-    var query;
+    var query, response;
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            if (code) {
+              _context.next = 2;
+              break;
+            }
+
+            throw new Error('code missing, try with Orionx.market({code: \'LTCBTC\'})');
+
+          case 2:
             query = (0, _graphqlTag2.default)(_templateObject);
-            _context.next = 3;
+            _context.next = 5;
             return this.graphql({ query: query, variables: { code: code } });
 
-          case 3:
-            return _context.abrupt('return', _context.sent);
+          case 5:
+            response = _context.sent;
+            return _context.abrupt('return', response.market);
 
-          case 4:
+          case 7:
           case 'end':
             return _context.stop();
         }
