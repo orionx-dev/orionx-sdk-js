@@ -1,6 +1,5 @@
 import gql from 'graphql-tag'
 
-// const errorText = param => `Missing ${param}, try with Orionx.createPayment({acceptedCurrenciesCodes: [], })`
 export default async function(variables) {
   const {
     acceptedCurrenciesCodes,
