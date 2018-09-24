@@ -118,6 +118,25 @@ await Orionx.markets()
 
 ---
 
+### placeMarketOrder
+
+The `placeMarketOrder()` creates and returns a market order .
+
+```js
+await Orionx.placeMarketOrder({marketCode: ':marketCode', amount: :amount, sell: :sell})
+```
+
+#### Params
+
+**marketCode:** Market code
+
+**amount** The amount to be bought or sold, this amount must be multiplied by 10 ^ (unit amount)
+For example BTC units = 8 so to sell 1 BTC amount should be 1 \* 10⁸.
+
+**sell** Boolean that defines if you buy or sell
+
+---
+
 ## Docs
 
 For further information about, visit our [Docs](http://docs.orionx.com/docs/getStarted/)

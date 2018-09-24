@@ -1,6 +1,7 @@
 import test from 'ava'
 import Orionx from '../../src'
 import setOrionxCredentials from '../../src/helpers/setOrionxCredentials'
+import delay from '../../src/helpers/delay'
 
 test.beforeEach(t => {
   setOrionxCredentials()
@@ -16,4 +17,8 @@ test('Markets method returns martkets', async t => {
   } catch (e) {
     t.fail(e.message)
   }
+})
+
+test.afterEach(async t => {
+  await delay()
 })
