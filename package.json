@@ -1,10 +1,6 @@
 {
   "name": "orionx-sdk",
-<<<<<<< HEAD
-  "version": "0.1.6",
-=======
   "version": "0.2.0",
->>>>>>> 45e3ef0a752fabca4ea56df8649b6f93ddb9b619
   "description": "Help developers with Orionx integrations",
   "main": "build/index.js",
   "scripts": {
@@ -15,21 +11,11 @@
     "circleci-test": "ava --fail-fast --verbose"
   },
   "ava": {
-    "files": [
-      "test/**/*.js"
-    ],
-    "sources": [
-      "./lib/*"
-    ],
-    "require": [
-      "babel-register"
-    ]
+    "files": ["test/**/*.js"],
+    "sources": ["./lib/*"],
+    "require": ["babel-register"]
   },
-  "keywords": [
-    "orionx",
-    "orion",
-    "orionx-sdk"
-  ],
+  "keywords": ["orionx", "orion", "orionx-sdk"],
   "author": "Orionx <contacto@orionx.com> (https://orionx.com/)",
   "homepage": "https://github.com/orionx-dev/orionx-sdk-js",
   "repository": {
