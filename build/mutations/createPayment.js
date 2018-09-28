@@ -33,22 +33,18 @@ exports.default = function () {
         switch (_context.prev = _context.next) {
           case 0:
             acceptedCurrenciesCodes = variables.acceptedCurrenciesCodes, amount = variables.amount, callbackURL = variables.callbackURL, description = variables.description, mainCurrencyCode = variables.mainCurrencyCode, returnURL = variables.returnURL, title = variables.title;
-
-            // Validations
-
-            if (!amount) {}
             query = (0, _graphqlTag2.default)(_templateObject);
-            _context.next = 5;
+            _context.next = 4;
             return this.graphql({
               query: query,
               variables: variables
             });
 
-          case 5:
+          case 4:
             response = _context.sent;
             return _context.abrupt('return', response.createPayment);
 
-          case 7:
+          case 6:
           case 'end':
             return _context.stop();
         }
