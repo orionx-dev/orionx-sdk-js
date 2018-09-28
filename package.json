@@ -1,13 +1,17 @@
 {
   "name": "orionx-sdk",
+<<<<<<< HEAD
   "version": "0.1.6",
+=======
+  "version": "0.2.0",
+>>>>>>> 45e3ef0a752fabca4ea56df8649b6f93ddb9b619
   "description": "Help developers with Orionx integrations",
   "main": "build/index.js",
   "scripts": {
     "dev": "watch 'npm run build' src",
     "build": "babel  src -d build",
     "pretest": "sh .env",
-    "test": "ava --fail-fast --verbose",
+    "test": "ava --fail-fast --serial --verbose",
     "circleci-test": "ava --fail-fast --verbose"
   },
   "ava": {

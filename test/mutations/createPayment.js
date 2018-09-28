@@ -1,6 +1,7 @@
 import test from 'ava'
 import Orionx from '../../src'
 import setOrionxCredentials from '../../src/helpers/setOrionxCredentials'
+import delay from '../../src/helpers/delay'
 
 test.beforeEach(t => {
   setOrionxCredentials()
@@ -18,4 +19,8 @@ test('Create a payment', async t => {
   t.true(!!payment)
   t.is(payment.mainCurrency.code, 'CLP')
   t.is(payment.status, 'waiting')
+})
+
+test.afterEach(async t => {
+  await delay()
 })
