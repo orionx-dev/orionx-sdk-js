@@ -55,8 +55,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       #Run the tests
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: echo "export API_KEY=$API_KEY"
-      - run: echo "export SECRET_KEY=$SECRET_KEY"
+      - run: echo "export API_KEY=$API_KEY >> .env"
+      - run: echo "export SECRET_KEY=$SECRET_KEY >> .env"
       - run: npm run build
       - run: npm publish
 
