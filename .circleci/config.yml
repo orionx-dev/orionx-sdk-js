@@ -32,6 +32,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       #Run the tests
+      - run: echo "export API_KEY=$API_KEY >> .env"
+      - run: echo "export SECRET_KEY=$SECRET_KEY >> .env"
       - run: npm run test
 
   publish:
