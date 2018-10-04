@@ -24,7 +24,6 @@ var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// const errorText = param => `Missing ${param}, try with Orionx.createPayment({acceptedCurrenciesCodes: [], })`
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(variables) {
     var acceptedCurrenciesCodes, amount, callbackURL, description, mainCurrencyCode, returnURL, title, query, response;
