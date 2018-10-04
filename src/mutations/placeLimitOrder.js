@@ -10,7 +10,7 @@ export default async function({marketCode, amount, limitPrice, sell}) {
   if (!marketCode) throwParamsError('marketCode')
   if (!amount) throwParamsError('amount')
   if (!amount) throwParamsError('limitPrice')
-  if (!sell) throwParamsError('sell')
+  if (sell == null) throwParamsError('sell')
 
   const query = gql`
     mutation placeLimitOrder(

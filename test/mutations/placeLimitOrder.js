@@ -28,7 +28,7 @@ test('placeLimitOrder throws marketCode missing', async t => {
     await Orionx.placeLimitOrder({
       amount: 1,
       limitPrice: 1,
-      sell: true
+      sell: false
     })
   } catch (err) {
     t.true(/Missing marketCode/.test(err.message))

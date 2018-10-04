@@ -9,7 +9,7 @@ const throwParamsError = param => {
 export default async function({marketCode, amount, sell}) {
   if (!marketCode) throwParamsError('marketCode')
   if (!amount) throwParamsError('amount')
-  if (!sell) throwParamsError('sell')
+  if (sell == null) throwParamsError('sell')
 
   const query = gql`
     mutation placeMarketOrder($marketCode: ID, $amount: BigInt, $sell: Boolean) {

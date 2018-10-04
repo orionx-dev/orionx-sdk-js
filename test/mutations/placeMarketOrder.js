@@ -37,7 +37,7 @@ test('placeMarketOrder throws amount missing', async t => {
   try {
     await Orionx.placeMarketOrder({
       marketCode: 'CHACLP',
-      sell: true
+      sell: false
     })
   } catch (err) {
     t.true(/Missing amount/.test(err.message))
