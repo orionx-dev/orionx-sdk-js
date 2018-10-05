@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "watch 'npm run build' src",
     "build": "babel  src -d build",
-    "pretest": "sh .env",
-    "test": "ava --fail-fast --serial --verbose",
-    "circleci-test": "ava --fail-fast --verbose"
+    "test": "ava --fail-fast --serial --verbose"
   },
   "ava": {
     "files": [
