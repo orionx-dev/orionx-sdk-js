@@ -7,7 +7,7 @@ test.beforeEach(t => {
   setOrionxCredentials()
 })
 
-test('Markets method returns martkets', async t => {
+test('Markets method returns markets', async t => {
   t.plan(2)
   try {
     const markets = await Orionx.markets()
