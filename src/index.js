@@ -1,6 +1,7 @@
 import callOrionx from './helpers/callOrionx'
 import queries from './queries'
 import mutations from './mutations'
+import gql from 'graphql-tag'
 
 const throwCredentialsError = param => {
   throw new Error(
@@ -37,7 +38,7 @@ const Orionx = {
   },
   mutation({schema, params}) {
     const query = gql`mutation ${schema}`
-    return this.graphql({query, variables})
+    return this.graphql({query, params})
   },
   ...queries,
   ...mutations
