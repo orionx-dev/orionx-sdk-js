@@ -39,22 +39,36 @@ After that we are ready to go
 import Orionx from 'orionx-sdk'
 
 Orionx.setCredentials({
-  apiKey: '<apiKey>',
-  secretKey: '<secretKey>',
-  apiUriL '<https://apiUri.com/graphql>'
+	apiKey: '<apiKey>',
+	secretKey: '<secretKey>',
+	apiUri: '<https://apiUri.com/graphql>'
 })
 
 // And then use this in any Component.js
-Orionx.market({code: 'LTCBTC'})
-      .then(function(market) {
-        console.log(market)
-      })
-      .catch(function(err) {
-        console.log(err)
-      })
+Orionx.market({ code: 'LTCBTC' })
+	.then(function(market) {
+		console.log(market)
+	})
+	.catch(function(err) {
+		console.log(err)
+	})
 ```
 
 ## Methods
+
+### cancelOrder
+
+Cancel an order by id.
+
+```js
+await Orionx.cancelOrder({ orderId: 'asd73jksslksdf' })
+```
+
+#### Params
+
+**orderId:** Id of the order
+
+---
 
 ### createPayment
 
@@ -62,11 +76,11 @@ The `createPayment()` creates a new payment and returns its data.
 
 ```js
 await Orionx.createPayment({
-  acceptedCurrenciesCodes: ['LTC', 'BTC'],
-  amount: 1000,
-  description: 'Testing...',
-  mainCurrencyCode: 'CLP',
-  title: 'Test'
+	acceptedCurrenciesCodes: ['LTC', 'BTC'],
+	amount: 1000,
+	description: 'Testing...',
+	mainCurrencyCode: 'CLP',
+	title: 'Test'
 })
 ```
 
@@ -99,7 +113,7 @@ await Orionx.me()
 The `market()` method returns the info of a specified market.
 
 ```js
-await Orionx.market({code: ':marketCode'})
+await Orionx.market({ code: ':marketCode' })
 ```
 
 #### Params
