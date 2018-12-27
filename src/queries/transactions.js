@@ -1,15 +1,17 @@
 import gql from 'graphql-tag'
 
-export default async function({ filter, page, limit, sortBy, sortType }) {
+export default async function({walletId, filter, page, limit, sortBy, sortType}) {
   const query = gql`
-    query getTrades(
+    query getTransactions(
+      $walletId: ID
       $filter: String
       $page: Int
       $limit: Int
       $sortBy: String
       $sortType: SortType
     ) {
-      trades(
+      transactions(
+        walletId: $walletId
         filter: $filter
         page: $page
         limit: $limit
@@ -25,23 +27,22 @@ export default async function({ filter, page, limit, sortBy, sortType }) {
         items {
           _id
           amount
-          price
-          totalCost
+          balance
+          commission
           date
-          market {
-            code
-            name
-            commission
-            releaseDate
-            isMaintenance
-          }
+          type
+          adds
+          hash
+          description
+          price
+          explorerURL
         }
       }
     }
   `
   const response = await this.graphql({
     query,
-    variables: { filter, page, limit, sortBy, sortType }
+    variables: {walletId, filter, page, limit, sortBy, sortType}
   })
-  return response.trades
+  return response.transactions
 }
