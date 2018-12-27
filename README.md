@@ -86,7 +86,7 @@ await Orionx.createPayment({
 
 ### me
 
-The `me()` method returns yours user data.
+The `me()` method returns yours user data. Including Wallets
 
 ```js
 await Orionx.me()
@@ -155,6 +155,24 @@ await Orionx.placeMarketOrder({marketCode: ':marketCode', amount: :amount, sell:
 For example BTC units = 8 so to sell 1 BTC amount should be 1 \* 10⁸.
 
 **sell** Boolean that defines if you buy or sell
+
+---
+
+### transactions
+
+The `transactions()` shows all transactions from the given wallet. It's results are paginated.
+
+```js
+await Orionx.transactions({walletId: ':walletId', page: :page, limit: :limit })
+```
+
+#### Params
+
+**walletId:** The ID of the wallet you want to see the transactions of
+
+**page:** The page of results you want to display.
+
+**limit:** The number of items per page.
 
 ---
 
