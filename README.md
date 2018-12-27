@@ -172,6 +172,30 @@ For example BTC units = 8 so to sell 1 BTC amount should be 1 \* 10⁸.
 
 ---
 
+### Wallet
+
+Get a wallet by an id
+
+```js
+await Orionx.wallet({ currencyCode: ':currencyCode' })
+```
+
+#### Params
+
+**currencyCode:** Currency code
+
+---
+
+### Wallets
+
+Gets all my wallets
+
+```js
+await Orionx.wallets()
+```
+
+---
+
 ## Docs
 
 For further information about, visit our [Docs](http://docs.orionx.com/docs/getStarted/)
