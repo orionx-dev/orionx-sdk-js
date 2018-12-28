@@ -45,7 +45,7 @@ Orionx.setCredentials({
 })
 
 // And then use this in any Component.js
-Orionx.market({ code: 'LTCBTC' })
+Orionx.market({code: 'LTCBTC'})
 	.then(function(market) {
 		console.log(market)
 	})
@@ -61,7 +61,7 @@ Orionx.market({ code: 'LTCBTC' })
 Cancel an order by id.
 
 ```js
-await Orionx.cancelOrder({ orderId: 'asd73jksslksdf' })
+await Orionx.cancelOrder({orderId: 'asd73jksslksdf'})
 ```
 
 #### Params
@@ -113,7 +113,7 @@ await Orionx.me()
 The `market()` method returns the info of a specified market.
 
 ```js
-await Orionx.market({ code: ':marketCode' })
+await Orionx.market({code: ':marketCode'})
 ```
 
 #### Params
@@ -172,12 +172,28 @@ For example BTC units = 8 so to sell 1 BTC amount should be 1 \* 10⁸.
 
 ---
 
+### transactions
+
+The `transactions()` shows all transactions from the given wallet. It's results are paginated.
+
+```js
+await Orionx.transactions({walletId: ':walletId', page: :page, limit: :limit })
+```
+
+#### Params
+
+**walletId:** The ID of the wallet you want to display the transactions
+
+**page:** The page of results you want to display.
+
+**limit:** The number of items per page.
+
 ### Wallet
 
 Get a wallet by an id
 
 ```js
-await Orionx.wallet({ currencyCode: ':currencyCode' })
+await Orionx.wallet({currencyCode: ':currencyCode'})
 ```
 
 #### Params
