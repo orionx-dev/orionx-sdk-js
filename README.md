@@ -122,6 +122,22 @@ await Orionx.market({code: ':marketCode'})
 
 ---
 
+### marketOrderBook
+
+The `marketOrderBook()` method returns the info of a specified market order book.
+
+```js
+await Orionx.marketOrderBook({marketCode: ':marketCode', limit: 5})
+```
+
+#### Params
+
+**marketCode:** Market code
+
+**limit** Number of buy/sell orders
+
+---
+
 ### markets
 
 The `markets()` method returns the info of all the markets.
