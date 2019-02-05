@@ -14,12 +14,13 @@ export default async function() {
 						name
 						symbol
 						format
+						units
 					}
 				}
 			}
 		}
 	`
-	const response = await this.graphql({ query, variables: {} })
+	const response = await this.graphql({query, variables: {}})
 
 	return response.me.wallets
 }
