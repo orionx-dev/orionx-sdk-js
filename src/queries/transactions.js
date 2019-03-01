@@ -36,6 +36,14 @@ export default async function({walletId, filter, page, limit, sortBy, sortType})
           description
           price
           explorerURL
+          currency {
+            code
+            isCrypto
+          }
+          market {
+            code
+            name
+          }
         }
       }
     }
