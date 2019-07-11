@@ -3,3 +3,4 @@ yarn.lock
 package-lock.json
 .env
 .nyc_output/
+build
