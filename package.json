@@ -54,6 +54,7 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
+    "babel-runtime": "6",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "jssha": "^2.3.1",
