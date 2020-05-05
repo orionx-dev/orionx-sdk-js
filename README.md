@@ -39,203 +39,21 @@ After that we are ready to go
 import Orionx from 'orionx-sdk'
 
 Orionx.setCredentials({
-	apiKey: '<apiKey>',
-	secretKey: '<secretKey>',
-	apiUri: '<https://apiUri.com/graphql>'
+  apiKey: '<apiKey>',
+  secretKey: '<secretKey>',
+  apiUri: 'https://api2.orionx.com/graphql',
 })
 
 // And then use this in any Component.js
 Orionx.market({code: 'LTCBTC'})
-	.then(function(market) {
-		console.log(market)
-	})
-	.catch(function(err) {
-		console.log(err)
-	})
+  .then(function (market) {
+    console.log(market)
+  })
+  .catch(function (err) {
+    console.log(err)
+  })
 ```
 
-## Methods
+## Documentation & Examples
 
-### cancelOrder
-
-Cancel an order by id.
-
-```js
-await Orionx.cancelOrder({orderId: 'asd73jksslksdf'})
-```
-
-#### Params
-
-**orderId:** Id of the order
-
----
-
-### createPayment
-
-The `createPayment()` creates a new payment and returns its data.
-
-```js
-await Orionx.createPayment({
-	acceptedCurrenciesCodes: ['LTC', 'BTC'],
-	amount: 1000,
-	description: 'Testing...',
-	mainCurrencyCode: 'CLP',
-	title: 'Test'
-})
-```
-
-#### Params
-
-**acceptedCurrenciesCodes:** The coin codes that the buyer will be able to use as payment
-
-**amount** The price in mainCurrencyCode units
-
-**description** Some descriptive text
-
-**mainCurrencyCode** The coin that you will recieve
-
-**title** Some descriptive title
-
----
-
-### me
-
-The `me()` method returns yours user data.
-
-```js
-await Orionx.me()
-```
-
----
-
-### market
-
-The `market()` method returns the info of a specified market.
-
-```js
-await Orionx.market({code: ':marketCode'})
-```
-
-#### Params
-
-**code:** Market code
-
----
-
-### marketOrderBook
-
-The `marketOrderBook()` method returns the info of a specified market order book.
-
-```js
-await Orionx.marketOrderBook({marketCode: ':marketCode', limit: 5})
-```
-
-#### Params
-
-**marketCode:** Market code
-
-**limit** Number of buy/sell orders
-
----
-
-### markets
-
-The `markets()` method returns the info of all the markets.
-
-```js
-await Orionx.markets()
-```
-
----
-
-### placeLimitOrder
-
-The `placeLimitOrder()` creates and returns a limit order .
-
-```js
-await Orionx.placeLimitOrder({marketCode: ':marketCode', amount: :amount, limitPrice: :limitPrice, sell: :sell})
-```
-
-#### Params
-
-**marketCode:** Market code
-
-**amount** The amount to be bought or sold, this amount must be multiplied by 10 ^ (unit amount)
-For example BTC units = 8 so to sell 1 BTC amount should be 1 \* 10⁸.
-
-**limitPrice** The price for the order
-
-**sell** Boolean that defines if you buy or sell
-
----
-
-### placeMarketOrder
-
-The `placeMarketOrder()` creates and returns a market order .
-
-```js
-await Orionx.placeMarketOrder({marketCode: ':marketCode', amount: :amount, sell: :sell})
-```
-
-#### Params
-
-**marketCode:** Market code
-
-**amount** The amount to be bought or sold, this amount must be multiplied by 10 ^ (unit amount)
-For example BTC units = 8 so to sell 1 BTC amount should be 1 \* 10⁸.
-
-**sell** Boolean that defines if you buy or sell
-
----
-
-### transactions
-
-The `transactions()` shows all transactions from the given wallet. It's results are paginated.
-
-```js
-await Orionx.transactions({walletId: ':walletId', page: :page, limit: :limit })
-```
-
-#### Params
-
-**walletId:** The ID of the wallet you want to display the transactions
-
-**page:** The page of results you want to display.
-
-**limit:** The number of items per page.
-
-### Wallet
-
-Get a wallet by an id
-
-```js
-await Orionx.wallet({currencyCode: ':currencyCode'})
-```
-
-#### Params
-
-**currencyCode:** Currency code
-
----
-
-### Wallets
-
-Gets all my wallets
-
-```js
-await Orionx.wallets()
-```
-
----
-
-## Docs
-
-For further information about, visit our [Docs](http://docs.orionx.com/docs/getStarted/)
-
-## Opening Issues
-
-If you encounter a bug with the Orionx SDK for JavaScript we would like to hear about it. Search the [existing issues](https://github.com/orionx-dev/orionx-sdk-js/issues) and try to make sure your problem doesn’t already exist before opening a new issue. It’s helpful if you include the version of the SDK, Node.js and OS you’re using.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+All documentation is [over here](http://docs.orionx.com/docs/sdk-javascript/)
