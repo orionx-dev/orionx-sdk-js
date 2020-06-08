@@ -1,13 +1,12 @@
 import generateSignature from './generateSignature'
-import rp from 'request-promise'
+import fetch from 'node-fetch'
 
-export default async function({body, credentials}) {
+export default async function ({body, credentials}) {
   const timestamp = new Date().getTime() / 1000
   const signature = generateSignature({body, timestamp, secretKey: credentials.secretKey})
 
   try {
-    const response = await rp({
-      uri: credentials.apiUri,
+    const response = await fetch(credentials.apiUri, {
       method: 'POST',
       headers: {
         'X-ORIONX-TIMESTAMP': timestamp,
@@ -16,7 +15,7 @@ export default async function({body, credentials}) {
       },
       body
     })
-    const {data, errors} = JSON.parse(response)
+    const {data, errors} = await response.json()
 
     if (errors) throw Error(errors[0].message)
 
