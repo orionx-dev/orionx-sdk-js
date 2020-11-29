@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
-export default async function({marketCode, limit}) {
+export default async function ({marketCode, limit}) {
   if (!marketCode)
-    throw new Error("Missing marketCode, try Orionx.openOrders({marketCode: 'BTCCLP'})")
+    throw new Error('Missing marketCode, try Orionx.openOrders({marketCode: \'BTCCLP\'})')
 
   if (!limit) limit = 15
 
