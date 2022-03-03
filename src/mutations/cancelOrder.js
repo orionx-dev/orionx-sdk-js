@@ -11,7 +11,7 @@ export default async function(variables) {
 
 	const query = gql`
 		mutation cancelOrder($orderId: ID) {
-			createPayment(orderId: $orderId) {
+			cancelOrder(orderId: $orderId) {
 				_id
 				type
 				status
