@@ -6,14 +6,14 @@ const throwParamsError = param => {
   `)
 }
 
-export default async function({marketCode, amount, sell}) {
+export default async function({marketCode, amount, sell, clientId}) {
   if (!marketCode) throwParamsError('marketCode')
   if (!amount) throwParamsError('amount')
   if (sell == null) throwParamsError('sell')
 
   const query = gql`
-    mutation placeMarketOrder($marketCode: ID, $amount: BigInt, $sell: Boolean) {
-      placeMarketOrder(marketCode: $marketCode, amount: $amount, sell: $sell) {
+    mutation placeMarketOrder($marketCode: ID, $amount: BigInt, $sell: Boolean, clientId: String) {
+      placeMarketOrder(marketCode: $marketCode, amount: $amount, sell: $sell, clientId: $clientId) {
         _id
         type
         amount
@@ -27,7 +27,7 @@ export default async function({marketCode, amount, sell}) {
 
   const response = await this.graphql({
     query,
-    variables: {marketCode, amount, sell}
+    variables: {marketCode, amount, sell, clientId}
   })
 
   return response.placeMarketOrder

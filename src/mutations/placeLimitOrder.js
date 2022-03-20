@@ -6,7 +6,7 @@ const throwParamsError = param => {
   `)
 }
 
-export default async function({ marketCode, amount, limitPrice, sell }) {
+export default async function({ marketCode, amount, limitPrice, sell, clientId }) {
 	if (!marketCode) throwParamsError('marketCode')
 	if (!amount) throwParamsError('amount')
 	if (!amount) throwParamsError('limitPrice')
@@ -18,12 +18,14 @@ export default async function({ marketCode, amount, limitPrice, sell }) {
 			$amount: BigInt
 			$limitPrice: BigInt
 			$sell: Boolean
+			$clientId: String
 		) {
 			placeLimitOrder(
 				marketCode: $marketCode
 				amount: $amount
 				limitPrice: $limitPrice
 				sell: $sell
+				clientId: $clientId
 			) {
 				_id
 				type
@@ -32,13 +34,14 @@ export default async function({ marketCode, amount, limitPrice, sell }) {
 				market {
 					code
 				}
+				clientId
 			}
 		}
 	`
 
 	const response = await this.graphql({
 		query,
-		variables: { marketCode, amount, limitPrice, sell }
+		variables: { marketCode, amount, limitPrice, sell, clientId }
 	})
 
 	return response.placeLimitOrder
