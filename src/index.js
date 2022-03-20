@@ -3,7 +3,6 @@ import setCredentials from './setCredentials'
 import checkCredentials from './checkCredentials'
 import queries from './queries'
 import mutations from './mutations'
-import gql from 'graphql-tag'
 
 const Orionx = {
   setCredentials,
