@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://orionx.com/">
-    <img alt="babel" src="https://orionx.com/logo.svg" width="546">
+    <img alt="Orionx" src="https://app.orionx.com/new-isologo.svg" width="546">
   </a>
 </p>
 
