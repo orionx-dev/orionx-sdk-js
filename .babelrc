@@ -1,21 +1,10 @@
 {
-  "presets": ["es2015", "stage-2"],
-  "plugins": [
-    "transform-decorators-legacy",
+  "presets": [
     [
-      "transform-runtime",
+      "@babel/preset-env",
       {
-        "polyfill": false,
-        "regenerator": true
-      }
-    ],
-    [
-      "module-resolver",
-      {
-        "root": ["./"],
-        "alias": {
-          "App": "./src"
-        }
+        "useBuiltIns": "usage",
+        "corejs": 3
       }
     ]
   ]
