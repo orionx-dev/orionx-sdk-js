@@ -31,6 +31,5 @@ export default async function ({marketCode, limit}) {
     query,
     variables: {marketCode, limit}
   })
-  console.log('response', response)
   return response.marketOrderBook
 }
