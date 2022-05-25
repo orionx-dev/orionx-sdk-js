@@ -1,7 +1,5 @@
-import gql from 'graphql-tag'
-
 export default async function() {
-  const query = gql`
+  const query = `
     mutation {
       requestRealtimeToken
     }

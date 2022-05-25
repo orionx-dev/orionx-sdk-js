@@ -1,5 +1,3 @@
-import gql from 'graphql-tag'
-
 const throwParamsError = param => {
   throw new Error(`Missing ${param}, try with Orionx.placeMarketOrder({marketCode: ':marketCode', amount: :amount, sell: :sell})
   Remember that the amount must be multiplied by 10^(currency units).
@@ -11,7 +9,7 @@ export default async function({marketCode, amount, sell, clientId}) {
   if (!amount) throwParamsError('amount')
   if (sell == null) throwParamsError('sell')
 
-  const query = gql`
+  const query = `
     mutation placeMarketOrder($marketCode: ID, $amount: BigInt, $sell: Boolean, clientId: String) {
       placeMarketOrder(marketCode: $marketCode, amount: $amount, sell: $sell, clientId: $clientId) {
         _id

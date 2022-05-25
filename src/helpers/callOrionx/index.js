@@ -6,12 +6,14 @@ export default async function ({body, credentials}) {
   const signature = generateSignature({body, timestamp, secretKey: credentials.secretKey})
 
   try {
+    console.log('body is', body)
     const response = await fetch(credentials.apiUri, {
       method: 'POST',
       headers: {
         'X-ORIONX-TIMESTAMP': timestamp,
         'X-ORIONX-APIKEY': credentials.apiKey,
-        'X-ORIONX-SIGNATURE': signature
+        'X-ORIONX-SIGNATURE': signature,
+        'Content-Type': 'application/json'
       },
       body
     })

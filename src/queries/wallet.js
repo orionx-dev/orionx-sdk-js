@@ -1,10 +1,8 @@
-import gql from 'graphql-tag'
-
 export default async function ({currencyCode}) {
   if (!currencyCode)
     throw new Error('Missing currencyCode, try Orionx.wallet({currencyCode: \'CLP\'})')
 
-  const query = gql`
+  const query = `
     query getWallet($currencyCode: ID!) {
       me {
         _id

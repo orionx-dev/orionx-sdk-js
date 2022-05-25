@@ -1,7 +1,5 @@
-import gql from 'graphql-tag'
-
 export default async function({walletId, filter, page, limit, sortBy, sortType}) {
-  const query = gql`
+  const query = `
     query getTransactions(
       $walletId: ID
       $filter: String
