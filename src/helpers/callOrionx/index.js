@@ -6,7 +6,6 @@ export default async function ({body, credentials}) {
   const signature = generateSignature({body, timestamp, secretKey: credentials.secretKey})
 
   try {
-    console.log('body is', body)
     const response = await fetch(credentials.apiUri, {
       method: 'POST',
       headers: {
