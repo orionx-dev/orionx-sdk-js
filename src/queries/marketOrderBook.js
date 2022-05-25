@@ -1,5 +1,3 @@
-import gql from 'graphql-tag'
-
 export default async function ({marketCode, limit}) {
   if (!marketCode)
     throw new Error(
@@ -11,7 +9,7 @@ export default async function ({marketCode, limit}) {
       'limit missing, try with Orionx.marketOrderBook({marketCode: \'LTCBTC\', limit: 5})'
     )
 
-  const query = gql`
+  const query = `
     query marketOrderBook($marketCode: ID!, $limit: Int) {
       marketOrderBook(marketCode: $marketCode, limit: $limit) {
         sell {

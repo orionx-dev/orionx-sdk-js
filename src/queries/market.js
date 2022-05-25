@@ -1,8 +1,6 @@
-import gql from 'graphql-tag'
-
 export default async function ({code}) {
   if (!code) throw new Error('code missing, try with Orionx.market({code: \'LTCBTC\'})')
-  const query = gql`
+  const query = `
     query getMarket($code: ID) {
       market(code: $code) {
         name

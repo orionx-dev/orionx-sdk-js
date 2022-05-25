@@ -1,5 +1,3 @@
-import gql from 'graphql-tag'
-
 const throwError = param => {
   throw new Error(
     `Missing ${param}, try with Orionx.cancelOrder({orderId: ":orderId"})`
@@ -9,7 +7,7 @@ const throwError = param => {
 export default async function(variables) {
   if (!variables.orderId) throwError('orderId')
 
-  const query = gql`
+  const query = `
 		mutation cancelOrder($orderId: ID) {
 			cancelOrder(orderId: $orderId) {
 				_id

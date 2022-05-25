@@ -1,5 +1,3 @@
-import gql from 'graphql-tag'
-
 const throwError = param => {
   throw new Error(
     `Missing ${param}, try with Orionx.createPayment({acceptedCurrenciesCodes: ["BTC", "ETH"], amount: 1500, mainCurrencyCode "CLP", title: "test payment"}) method`
@@ -12,7 +10,7 @@ export default async function(variables) {
   if (!variables.mainCurrencyCode) throwError('mainCurrencyCode')
   if (!variables.title) throwError('title')
 
-  const query = gql`
+  const query = `
 		mutation createPayment(
 			$acceptedCurrenciesCodes: [ID]
 			$amount: BigInt

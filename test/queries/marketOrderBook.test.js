@@ -1,7 +1,7 @@
 import test from 'ava'
 import Orionx from '../../src/'
 
-test('Throws error without valid code', async t => {
+test('Throws error without valid orderbook limit', async t => {
   const validMsg =
 		'limit missing, try with Orionx.marketOrderBook({marketCode: \'LTCBTC\', limit: 5})'
   try {
