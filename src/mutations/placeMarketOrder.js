@@ -10,7 +10,7 @@ export default async function({marketCode, amount, sell, clientId}) {
   if (sell == null) throwParamsError('sell')
 
   const query = `
-    mutation placeMarketOrder($marketCode: ID, $amount: BigInt, $sell: Boolean, clientId: String) {
+    mutation placeMarketOrder($marketCode: ID, $amount: BigInt, $sell: Boolean, $clientId: String) {
       placeMarketOrder(marketCode: $marketCode, amount: $amount, sell: $sell, clientId: $clientId) {
         _id
         type
