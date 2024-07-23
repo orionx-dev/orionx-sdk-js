@@ -1,5 +1,6 @@
 import Api from './api';
 import User from './user';
+import Order from './order';
 
 export class Orionx {
   private readonly apiKey: string;
@@ -12,6 +13,7 @@ export class Orionx {
     this.apiEndpoint = apiEndpoint;
     this.apiClient = new Api(apiKey, apiSecret, apiEndpoint);
     this.user = new User(this.apiClient);
+    this.order = new Order(this.apiClient);
   }
 
   public async placeLimitOrder() {
