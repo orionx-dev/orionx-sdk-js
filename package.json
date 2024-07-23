@@ -7,6 +7,7 @@
     "lib/**/*"
   ],
   "scripts": {
+    "start:dev": "bun --watch src/index.ts",
     "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib/",
     "lint": "eslint ./src/ --fix",
