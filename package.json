@@ -1,56 +1,113 @@
 {
   "name": "orionx-sdk",
-  "version": "1.3.18",
-  "description": "Help developers with Orionx integrations",
-  "main": "build/index.js",
-  "scripts": {
-    "dev": "watch 'npm run build' src",
-    "build": "babel  src -d build",
-    "test": "ava --fail-fast --serial --verbose",
-    "cover": "nyc npm run test"
-  },
-  "ava": {
-    "files": [
-      "test/**/*.js"
-    ],
-    "ignoredByWatcher": [
-      "**/node_modules/**",
-      ".github/**"
-    ],
-    "require": [
-      "@babel/register"
-    ]
-  },
-  "keywords": [
-    "orionx",
-    "orion",
-    "orionx-sdk"
+  "version": "2.0.0--development",
+  "description": "Official Orionx SDK for Node.js",
+  "main": "./lib/index.js",
+  "files": [
+    "lib/**/*"
   ],
-  "author": "Orionx <contacto@orionx.com> (https://orionx.com/)",
-  "homepage": "https://github.com/orionx-dev/orionx-sdk-js",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rm -rf ./lib/",
+    "lint": "eslint ./src/ --fix",
+    "prepare": "husky install",
+    "semantic-release": "semantic-release",
+    "test:watch": "jest --watch",
+    "test": "jest --coverage",
+    "typecheck": "tsc --noEmit"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/orionx-dev/orionx-sdk-js/"
+    "url": "git+https://github.com/orionx-dev/orionx-sdk-js.git"
   },
   "license": "MIT",
-  "dependencies": {
-    "core-js": "^3.6.2",
-    "jssha": "^3.1.0",
-    "node-fetch": "^2.6.0",
-    "regenerator-runtime": "^0.13.3"
+  "author": {
+    "name": "Joaquin Diaz",
+    "email": "joadr@users.noreply.github.com",
+    "url": "https://github.com/joadr"
   },
+  "engines": {
+    "node": ">=20.0"
+  },
+  "keywords": [
+    "boilerplate",
+    "template",
+    "typescript",
+    "vscode",
+    "jest",
+    "husky",
+    "commitizen",
+    "semantic-release",
+    "orionx"
+  ],
+  "bugs": {
+    "url": "https://github.com/orionx-dev/orionx-sdk-js/issues"
+  },
+  "homepage": "https://github.com/orionx-dev/orionx-sdk-js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/node": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "@babel/register": "^7.7.7",
-    "ava": "^4.2.0",
-    "dotenv": "^8.2.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.12.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^12.20.11",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "watch": "^0.13.0"
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "jest": "^27.2.0",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.2.1",
+    "semantic-release": "^21.0.1",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.2.4"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache --cache-location .eslintcache --fix"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits",
+          "releaseRules": [
+            {
+              "type": "build",
+              "scope": "deps",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "build",
+                "section": "Dependencies and Other Build Updates",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
   }
 }
