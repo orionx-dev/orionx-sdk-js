@@ -11,10 +11,10 @@ module.exports = {
     'plugin:node/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:prettier/recommended',
   ],
   rules: {
+    'no-unused-vars': 'off', // Let typescript handle this
     'prettier/prettier': 'warn',
     'node/no-missing-import': 'off',
     'node/no-empty-function': 'off',
@@ -28,5 +28,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };
