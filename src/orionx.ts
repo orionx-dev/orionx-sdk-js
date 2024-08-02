@@ -1,56 +1,35 @@
 import Api from './api';
 import User from './user';
-import Order from './order';
+import Orders from './orders';
+import { Response } from 'node-fetch';
 
 export class Orionx {
   private readonly apiKey: string;
   private readonly apiSecret: string;
   private readonly apiEndpoint: string;
+  private apiClient: Api;
+  public user: User;
+  public orders: Orders;
 
-  constructor(apiKey: string, apiSecret: string, apiEndpoint: string) {
+  constructor(
+    apiKey: string,
+    apiSecret: string,
+    apiEndpoint: string,
+    callMock?: (endpoint: string, body: any, headers: any) => Response,
+    hasherMock?: (secret: string, timestamp: any, payload: string) => string
+  ) {
     this.apiKey = apiKey;
     this.apiSecret = apiSecret;
     this.apiEndpoint = apiEndpoint;
-    this.apiClient = new Api(apiKey, apiSecret, apiEndpoint);
+    this.apiClient = new Api(
+      apiKey,
+      apiSecret,
+      apiEndpoint,
+      callMock,
+      hasherMock
+    );
     this.user = new User(this.apiClient);
-    this.order = new Order(this.apiClient);
-  }
-
-  public async placeLimitOrder() {
-    const query = `
-      mutation placeLimitOrder(
-        $marketCode: ID
-        $amount: BigInt
-        $limitPrice: BigInt
-        $sell: Boolean
-        $clientId: String
-      ) {
-        placeLimitOrder(
-          marketCode: $marketCode
-          amount: $amount
-          limitPrice: $limitPrice
-          sell: $sell
-          clientId: $clientId
-        ) {
-          _id
-          type
-          amount
-          createdAt
-          market {
-            code
-          }
-          clientId
-        }
-      }
-    `;
-
-    const response = await this.apiClient.apiCall(query, {
-      marketCode: 'BTCCLP',
-      amount: 10000,
-      limitPrice: 100000000,
-      sell: false,
-    });
-    return response;
+    this.orders = new Orders(this.apiClient);
   }
 }
 export default Orionx;
