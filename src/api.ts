@@ -1,9 +1,3 @@
-import fetch, { Response, RequestInit } from 'node-fetch';
-import crypto from 'crypto';
-
-const typedFetch: (url: string, options: RequestInit) => Promise<Response> =
-  fetch;
-
 export default class Api {
   private readonly apiKey: string;
   private readonly apiSecret: string;
@@ -28,7 +22,9 @@ export default class Api {
   }
 
   public async apiCall(endpoint, body, headers) {
-    const response: Response = await typedFetch(endpoint, {
+    const { default: fetch } = (await import('node-fetch')) as any;
+
+    const response: Response = await fetch(endpoint, {
       method: 'POST',
       headers,
       body,
@@ -42,7 +38,7 @@ export default class Api {
     try {
       const timestamp = new Date().getTime() / 1000;
       const body = JSON.stringify({ query, variables });
-      const signature = this.generateSignature(
+      const signature = await this.generateSignature(
         this.apiSecret,
         String(timestamp),
         body
@@ -62,14 +58,15 @@ export default class Api {
     }
   }
 
-  private generateSignature(
+  private async generateSignature(
     secret: string,
     eventTimestamp: string,
     rawBody: any
-  ): string {
+  ): Promise<string> {
     if (this.hasherMock) {
       return this.hasherMock(secret, eventTimestamp, rawBody);
     }
+    const crypto = await import('crypto');
     const hasher = crypto.createHmac('sha512', secret);
     hasher.update(eventTimestamp + rawBody);
     return hasher.digest('hex');
