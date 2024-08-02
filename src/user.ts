@@ -2,15 +2,14 @@ import Api from './api';
 
 export default class User {
   public userId: string;
+  private apiClient: Api;
 
   constructor(apiClient: Api) {
     this.apiClient = apiClient;
-    this.getUserId().then(response => {
-      this.userId = response.data.me._id;
-    });
+    this.userId = '';
   }
 
-  public async getUserId() {
+  public async getUserId(): Promise<any> {
     const query = `
       query {
         me {
@@ -19,7 +18,7 @@ export default class User {
       }
     `;
 
-    const response = await this.apiClient.apiCall(query, {});
+    const response = await this.apiClient.call(query, {});
     return response;
   }
 
@@ -34,7 +33,7 @@ export default class User {
       }
     `;
 
-    const response = await this.apiClient.apiCall(query, {});
+    const response = await this.apiClient.call(query, {});
     return response;
   }
 }
