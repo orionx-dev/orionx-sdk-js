@@ -175,6 +175,111 @@ export default class Orders {
     return response;
   }
 
+  public async placeStopLimitOrder(
+    marketCode: string,
+    stopPriceUp: number,
+    stopPriceDown: number,
+    amount: number,
+    limitPrice: number,
+    sell: boolean,
+    clientId?: string
+  ) {
+    const query = `
+      mutation sdk_placeStopLimitOrder(
+        $marketCode: ID
+        $stopPriceUp: BigInt
+        $stopPriceDown: BigInt
+        $amount: BigInt
+        $limitPrice: BigInt
+        $sell: Boolean
+        $clientId: String
+      ) {
+        placeStopLimitOrder(
+          marketCode: $marketCode
+          stopPriceUp: $stopPriceUp
+          stopPriceDown: $stopPriceDown
+          amount: $amount
+          limitPrice: $limitPrice
+          sell: $sell
+          clientId: $clientId
+        ) {
+          _id
+          type
+          amount
+          limitPrice
+          status
+          createdAt
+          market {
+            code
+          }
+          clientId
+        }
+      }
+    `;
+    const response = await this.apiClient.call(query, {
+      marketCode,
+      stopPriceUp,
+      stopPriceDown,
+      amount,
+      limitPrice,
+      sell,
+      clientId,
+    });
+
+    return response;
+  }
+
+  public async placeStopMarketOrder(
+    marketCode: string,
+    stopPriceUp: number,
+    stopPriceDown: number,
+    amount: number,
+    sell: boolean,
+    clientId?: string
+  ) {
+    const query = `
+      mutation sdk_placeStopMarketOrder(
+        $marketCode: ID
+        $stopPriceUp: BigInt
+        $stopPriceDown: BigInt
+        $amount: BigInt
+        $sell: Boolean
+        $clientId: String
+      ) {
+        placeStopMarketOrder(
+          marketCode: $marketCode
+          stopPriceUp: $stopPriceUp
+          stopPriceDown: $stopPriceDown
+          amount: $amount
+          sell: $sell
+          clientId: $clientId
+        ) {
+          _id
+          type
+          amount
+          limitPrice
+          status
+          createdAt
+          market {
+            code
+          }
+          clientId
+        }
+      }
+    `;
+
+    const response = await this.apiClient.call(query, {
+      marketCode,
+      stopPriceUp,
+      stopPriceDown,
+      amount,
+      sell,
+      clientId,
+    });
+
+    return response;
+  }
+
   public async cancelOrder(orderId: string) {
     const query = `
       mutation sdk_cancelOrder($orderId: ID!) {
