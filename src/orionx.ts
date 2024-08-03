@@ -2,6 +2,7 @@ import Api from './api';
 import User from './user';
 import Orders from './orders';
 import Accounts from './accounts';
+import Markets from './markets';
 
 export class Orionx {
   private readonly apiKey: string;
@@ -11,6 +12,7 @@ export class Orionx {
   public user: User;
   public orders: Orders;
   public accounts: Accounts;
+  public markets: Markets;
 
   constructor(
     apiKey: string,
@@ -32,6 +34,7 @@ export class Orionx {
     this.user = new User(this.apiClient);
     this.orders = new Orders(this.apiClient);
     this.accounts = new Accounts(this.apiClient);
+    this.markets = new Markets(this.apiClient);
   }
 }
 export default Orionx;
