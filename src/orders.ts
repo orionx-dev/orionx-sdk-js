@@ -48,7 +48,7 @@ export default class Orders {
     return response;
   }
 
-  public async getOrders(ordersParameters: GetOrdersParameters) {
+  public async getOrders(parameters: GetOrdersParameters) {
     const query = `
       query sdk_getOrders($filter: String, $marketCode: String, $onlyOpen: Boolean, $onlyClosed: Boolean, $currencyCode: String, $onlyFilled: Boolean, $page: Int, $limit: Int, $sortBy: String, $sortType: String) {
         orders(filter: $filter, marketCode: $marketCode, onlyOpen: $onlyOpen, onlyClosed: $onlyClosed, currencyCode: $currencyCode, onlyFilled: $onlyFilled, page: $page, limit: $limit, sortBy: $sortBy, sortType: $sortType) {
@@ -77,7 +77,7 @@ export default class Orders {
       }
     `;
 
-    const response = await this.apiClient.call(query, ordersParameters);
+    const response = await this.apiClient.call(query, parameters);
 
     return response;
   }
