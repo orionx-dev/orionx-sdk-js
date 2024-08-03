@@ -11,7 +11,7 @@ export default class User {
 
   public async getUserId(): Promise<any> {
     const query = `
-      query {
+      query sdk_getUserId {
         me {
           _id
         }
@@ -24,11 +24,20 @@ export default class User {
 
   public async getMe() {
     const query = `
-      query {
+      query sdk_getMe {
         me {
           _id
           email
           name
+          profile {
+            fullName
+            phone
+            kycVerified
+            birthdate
+            countryCode
+            occupation
+            address
+          }
         }
       }
     `;

@@ -14,7 +14,7 @@ export default class Orders {
 
   public async getOrder(orderId: string) {
     const query = `
-      query getOrder($orderId: ID!) {
+      query sdk_getOrder($orderId: ID!) {
         order(orderId: $orderId) {
           _id
           type
@@ -50,7 +50,7 @@ export default class Orders {
 
   public async getOrders(ordersParameters: GetOrdersParameters) {
     const query = `
-      query getOrders($filter: String, $marketCode: String, $onlyOpen: Boolean, $onlyClosed: Boolean, $currencyCode: String, $onlyFilled: Boolean, $page: Int, $limit: Int, $sortBy: String, $sortType: String) {
+      query sdk_getOrders($filter: String, $marketCode: String, $onlyOpen: Boolean, $onlyClosed: Boolean, $currencyCode: String, $onlyFilled: Boolean, $page: Int, $limit: Int, $sortBy: String, $sortType: String) {
         orders(filter: $filter, marketCode: $marketCode, onlyOpen: $onlyOpen, onlyClosed: $onlyClosed, currencyCode: $currencyCode, onlyFilled: $onlyFilled, page: $page, limit: $limit, sortBy: $sortBy, sortType: $sortType) {
           _id
           type
@@ -93,7 +93,7 @@ export default class Orders {
     clientId?: string
   ) {
     const query = `
-      mutation placeLimitOrder(
+      mutation sdk_placeLimitOrder(
         $marketCode: ID
         $amount: BigInt
         $limitPrice: BigInt
@@ -139,7 +139,7 @@ export default class Orders {
     clientId?: string
   ) {
     const query = `
-      mutation placeMarketOrder(
+      mutation sdk_placeMarketOrder(
         $marketCode: ID
         $amount: BigInt
         $sell: Boolean
@@ -177,7 +177,7 @@ export default class Orders {
 
   public async cancelOrder(orderId: string) {
     const query = `
-      mutation cancelOrder($orderId: ID!) {
+      mutation sdk_cancelOrder($orderId: ID!) {
         cancelOrder(orderId: $orderId) {
           _id
           type
