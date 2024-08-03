@@ -1,7 +1,7 @@
 import Api from './api';
 import User from './user';
 import Orders from './orders';
-import { Response } from 'node-fetch';
+import Accounts from './accounts';
 
 export class Orionx {
   private readonly apiKey: string;
@@ -10,6 +10,7 @@ export class Orionx {
   private apiClient: Api;
   public user: User;
   public orders: Orders;
+  public accounts: Accounts;
 
   constructor(
     apiKey: string,
@@ -30,6 +31,7 @@ export class Orionx {
     );
     this.user = new User(this.apiClient);
     this.orders = new Orders(this.apiClient);
+    this.accounts = new Accounts(this.apiClient);
   }
 }
 export default Orionx;
