@@ -50,6 +50,50 @@ export default class Orders {
       sell,
       clientId,
     });
+
+    return response;
+  }
+
+  public async placeMarketOrder(
+    marketCode: string,
+    amount: number,
+    sell: boolean,
+    clientId?: string
+  ) {
+    const query = `
+      mutation placeMarketOrder(
+        $marketCode: ID
+        $amount: BigInt
+        $sell: Boolean
+        $clientId: String
+      ) {
+        placeMarketOrder(
+          marketCode: $marketCode
+          amount: $amount
+          sell: $sell
+          clientId: $clientId
+        ) {
+          _id
+          type
+          amount
+          limitPrice
+          status
+          createdAt
+          market {
+            code
+          }
+          clientId
+        }
+      }
+    `;
+
+    const response = await this.apiClient.call(query, {
+      marketCode,
+      amount,
+      sell,
+      clientId,
+    });
+
     return response;
   }
 }
