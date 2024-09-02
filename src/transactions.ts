@@ -108,9 +108,9 @@ export default class Transactions {
 
   public async send(
     fromWalletId: string,
-    contactId?: string,
     network: string,
     amount: number,
+    contactId?: string,
     description?: string,
     clientId?: string
   ) {
@@ -146,10 +146,11 @@ export default class Transactions {
     `;
 
     const response = await this.apiClient.call(query, {
-      marketCode,
+      fromWalletId,
+      contactId,
+      network,
       amount,
-      limitPrice,
-      sell,
+      description,
       clientId,
     });
 
