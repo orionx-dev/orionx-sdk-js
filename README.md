@@ -35,25 +35,20 @@ After that we are ready to go
 ## Code example
 
 ```js
-// App.js
-import Orionx from 'orionx-sdk'
+// App.ts
+import { Orionx } from 'orionx-sdk';
 
-Orionx.setCredentials({
-  apiKey: '<apiKey>',
-  secretKey: '<secretKey>',
-  apiUri: 'https://api2.orionx.com/graphql',
-})
+const apiKey = 'your-api-key';
+const secretKey = 'your-secret-key';
 
-// And then use this in any Component.js
-Orionx.market({code: 'LTCBTC'})
-  .then(function (market) {
-    console.log(market)
-  })
-  .catch(function (err) {
-    console.log(err)
-  })
+const orionx = new Orionx(
+  apiKey,
+  secretKey,
+  'https://api.orionx.com/graphql',
+});
+
+// And then anywhere in your code
+const market = await orionx.markets.getMarket('LTCBTC')
+
+console.log(market)
 ```
-
-## Documentation & Examples
-
-All documentation is [over here](http://docs.orionx.com/docs/sdk-javascript/)
