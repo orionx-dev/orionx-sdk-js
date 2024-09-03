@@ -1,6 +1,6 @@
 {
   "name": "orionx-sdk",
-  "version": "2.0.0-rc0",
+  "version": "2.0.0-rc3",
   "description": "Official Orionx SDK for Node.js",
   "main": "./lib/index.js",
   "files": [
@@ -22,7 +22,7 @@
     "url": "git+https://github.com/orionx-dev/orionx-sdk-js.git"
   },
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "author": {
     "name": "Joaquin Diaz",
     "email": "joadr@users.noreply.github.com",
@@ -46,6 +46,10 @@
     "url": "https://github.com/orionx-dev/orionx-sdk-js/issues"
   },
   "homepage": "https://github.com/orionx-dev/orionx-sdk-js#readme",
+  "dependencies": {
+    "@types/node-fetch": "^2.6.11",
+    "node-fetch": "^2.6.1"
+  },
   "devDependencies": {
     "@types/jest": "^27.5.2",
     "@types/node": "^12.20.11",
@@ -111,9 +115,5 @@
       "@semantic-release/npm",
       "@semantic-release/github"
     ]
-  },
-  "dependencies": {
-    "@types/node-fetch": "^2.6.11",
-    "node-fetch": "^3.3.2"
   }
 }
