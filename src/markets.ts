@@ -13,7 +13,7 @@ export default class Markets {
 
   public async getMarket(code: string) {
     const query = `
-      query sdk_market($code: String!) {
+      query sdk_market($code: ID) {
         market(code: $code) {
           code
           name
