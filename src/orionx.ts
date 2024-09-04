@@ -8,7 +8,7 @@ export class Orionx {
   private readonly apiKey: string;
   private readonly apiSecret: string;
   private readonly apiEndpoint: string;
-  private apiClient: Api;
+  public apiClient: Api;
   public user: User;
   public orders: Orders;
   public accounts: Accounts;
