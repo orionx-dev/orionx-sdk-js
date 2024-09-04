@@ -157,6 +157,40 @@ export default class Transactions {
     return response;
   }
 
+  public async withdrawalRequest(
+    walletId: string, accountId: string, amount: number
+  ) {
+    const query = `
+      mutation sdk_withdrawalRequest(
+        $walletId: ID
+        $accountId: ID
+        $amount: BigInt
+      ) {
+        withdrawalRequest(
+          walletId: $walletId
+          accountId: $accountId
+          amount: $amount
+        ) {
+          _id
+          amount
+          commission
+          currency
+          date
+          type
+          description
+        }
+      }
+    `;
+
+    const response = await this.apiClient.call(query, {
+      walletId,
+      accountId,
+      amount
+    });
+
+    return response;
+  }
+
   public async convert(
     quoteOptionId: string,
     amount: number,
