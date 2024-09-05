@@ -204,7 +204,7 @@ export default class Transactions {
       mutation sdk_convert(
         $quoteOptionId: String
         $amount: BigInt!
-        $marketCode: ID!
+        $marketCode: String!
         $sell: Boolean!
       ) {
         instantTransaction(
@@ -222,5 +222,7 @@ export default class Transactions {
       marketCode,
       sell,
     });
+
+    return response;
   }
 }
