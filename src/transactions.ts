@@ -14,8 +14,8 @@ export default class Transactions {
 
   public async getTransaction(transactionId: string) {
     const query = `
-      query sdk_getTransaction($transaction: ID!) {
-        transaction(transactionId: $transactionId) {
+      query sdk_getTransaction($_id: ID!) {
+        transaction(_id: $_id) {
           _id
           amount
           balance
@@ -52,7 +52,7 @@ export default class Transactions {
     `;
 
     const response = await this.apiClient.call(query, {
-      transactionId,
+      _id: transactionId,
     });
 
     return response;
@@ -116,10 +116,10 @@ export default class Transactions {
   ) {
     const query = `
       mutation sdk_send(
-        $fromWalletId: ID
+        $fromWalletId: ID!
         $contactId: ID
-        $network: String
-        $amount: BigInt
+        $network: String!
+        $amount: BigInt!
         $description: String
         $clientId: ID
       ) {
@@ -134,13 +134,15 @@ export default class Transactions {
           _id
           type
           amount
-          limitPrice
-          status
-          createdAt
+          price
+          hash
+          date
           market {
             code
           }
-          clientId
+          meta { 
+            status
+          }
         }
       }
     `;
@@ -158,7 +160,9 @@ export default class Transactions {
   }
 
   public async withdrawalRequest(
-    walletId: string, accountId: string, amount: number
+    walletId: string,
+    accountId: string,
+    amount: number
   ) {
     const query = `
       mutation sdk_withdrawalRequest(
@@ -166,7 +170,7 @@ export default class Transactions {
         $accountId: ID
         $amount: BigInt
       ) {
-        withdrawalRequest(
+        requestWithdrawal(
           walletId: $walletId
           accountId: $accountId
           amount: $amount
@@ -174,7 +178,6 @@ export default class Transactions {
           _id
           amount
           commission
-          currency
           date
           type
           description
@@ -185,7 +188,7 @@ export default class Transactions {
     const response = await this.apiClient.call(query, {
       walletId,
       accountId,
-      amount
+      amount,
     });
 
     return response;
@@ -199,10 +202,10 @@ export default class Transactions {
   ) {
     const query = `
       mutation sdk_convert(
-        $quoteOptionId: ID
-        $amount: BigInt
-        $marketCode: ID
-        $sell: Boolean
+        $quoteOptionId: String
+        $amount: BigInt!
+        $marketCode: String!
+        $sell: Boolean!
       ) {
         instantTransaction(
           quoteOptionId: $quoteOptionId
@@ -219,5 +222,7 @@ export default class Transactions {
       marketCode,
       sell,
     });
+
+    return response;
   }
 }
