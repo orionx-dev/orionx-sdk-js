@@ -41,19 +41,21 @@ export default class Accounts {
   public async getAccounts() {
     const query = `
       query sdk_getAccounts {
-        wallets {
-          _id
-          currency {
-            code
-            units
+        me {
+          wallets {
+             _id
+            currency {
+              code
+              units
+            }
+            balance
+            availableBalance
+            availableNetworks {
+              code
+            }
+            balanceUSD
+            balanceCLP
           }
-          balance
-          availableBalance
-          availableNetworks {
-            code
-          }
-          balanceUSD
-          balanceCLP
         }
       }
     `;
