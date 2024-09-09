@@ -2,11 +2,7 @@ export default class Api {
   private readonly apiKey: string;
   private readonly apiSecret: string;
   private readonly apiEndpoint: string;
-  private readonly callMock: (
-    endpoint: string,
-    body: any,
-    headers: any
-  ) => Response;
+  private readonly callMock: (endpoint: string, body: any, headers: any) => any;
   private readonly hasherMock: (
     secret: string,
     timestamp: any,
@@ -21,9 +17,8 @@ export default class Api {
     this.hasherMock = hasherMock;
   }
 
-  public async apiCall(endpoint, body, headers) {
+  public async apiCall(endpoint, body, headers): Promise<any> {
     const { default: fetch } = (await import('node-fetch')) as any;
-
     const response: Response = await fetch(endpoint, {
       method: 'POST',
       headers,
@@ -31,6 +26,11 @@ export default class Api {
     });
 
     const data = await response.json();
+
+    if (response.status === 500) {
+      throw new Error(data.message);
+    }
+
     return data;
   }
 
@@ -50,11 +50,25 @@ export default class Api {
         'X-ORIONX-SIGNATURE': signature,
         'Content-Type': 'application/json',
       };
-      if (this.callMock) return this.callMock(this.apiEndpoint, body, headers);
 
-      return this.apiCall(this.apiEndpoint, body, headers);
-    } catch (error) {
-      console.error('Error:', error);
+      const apiFunction = this.callMock ?? this.apiCall;
+
+      const response = await apiFunction(this.apiEndpoint, body, headers);
+
+      if (response.errors) {
+        if (
+          response.errors[0].path &&
+          response.errors.length !== Object.keys(response.data).length
+        ) {
+          return response.data;
+        }
+        throw new Error(response.errors[0].message);
+      }
+
+      return response.data;
+    } catch (error: any) {
+      console.error(error.message);
+      throw new Error(error.message);
     }
   }
 

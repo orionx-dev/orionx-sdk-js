@@ -45,7 +45,7 @@ export default class Orders {
       orderId,
     });
 
-    return response;
+    return response.order;
   }
 
   public async getOrders(parameters: GetOrdersParameters) {
@@ -79,7 +79,7 @@ export default class Orders {
 
     const response = await this.apiClient.call(query, parameters);
 
-    return response;
+    return response.orders;
   }
 
   /**
@@ -129,7 +129,7 @@ export default class Orders {
       clientId,
     });
 
-    return response;
+    return response.placeLimitOrder;
   }
 
   public async placeMarketOrder(
@@ -172,7 +172,7 @@ export default class Orders {
       clientId,
     });
 
-    return response;
+    return response.placeMarketOrder;
   }
 
   public async placeStopLimitOrder(
@@ -226,7 +226,7 @@ export default class Orders {
       clientId,
     });
 
-    return response;
+    return response.placeStopLimitOrder;
   }
 
   public async placeStopMarketOrder(
@@ -277,7 +277,7 @@ export default class Orders {
       clientId,
     });
 
-    return response;
+    return response.placeStopMarketOrder;
   }
 
   public async cancelOrder(orderId: string) {
@@ -296,6 +296,6 @@ export default class Orders {
       orderId,
     });
 
-    return response;
+    return response.cancelOrder;
   }
 }

@@ -9,7 +9,7 @@ export default class User {
     this.userId = '';
   }
 
-  public async getUserId(): Promise<any> {
+  public async getUserId(): Promise<string> {
     const query = `
       query sdk_getUserId {
         me {
@@ -19,7 +19,7 @@ export default class User {
     `;
 
     const response = await this.apiClient.call(query, {});
-    return response;
+    return response.me?._id;
   }
 
   public async getMe() {
@@ -43,6 +43,6 @@ export default class User {
     `;
 
     const response = await this.apiClient.call(query, {});
-    return response;
+    return response.me;
   }
 }

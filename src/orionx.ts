@@ -20,7 +20,7 @@ export class Orionx {
     apiKey: string,
     apiSecret: string,
     apiEndpoint: string,
-    callMock?: (endpoint: string, body: any, headers: any) => Response,
+    callMock?: (endpoint: string, body: any, headers: any) => any,
     hasherMock?: (secret: string, timestamp: any, payload: string) => string
   ) {
     this.apiKey = apiKey;

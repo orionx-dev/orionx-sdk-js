@@ -55,7 +55,7 @@ export default class Transactions {
       _id: transactionId,
     });
 
-    return response;
+    return response.transaction;
   }
 
   public async getTransactions(parameters: GetTransactionsParameters) {
@@ -99,7 +99,7 @@ export default class Transactions {
 
     const response = await this.apiClient.call(query, parameters);
 
-    return response;
+    return response.transactions;
   }
 
   /**
@@ -156,7 +156,7 @@ export default class Transactions {
       clientId,
     });
 
-    return response;
+    return response.sendCrypto;
   }
 
   public async withdrawalRequest(
@@ -191,7 +191,7 @@ export default class Transactions {
       amount,
     });
 
-    return response;
+    return response.requestWithdrawal;
   }
 
   public async convert(
@@ -223,6 +223,6 @@ export default class Transactions {
       sell,
     });
 
-    return response;
+    return response.instantTransaction;
   }
 }

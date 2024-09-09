@@ -38,7 +38,7 @@ export default class Markets {
       code,
     });
 
-    return response;
+    return response.market;
   }
 
   public async getMarkets() {
@@ -62,7 +62,7 @@ export default class Markets {
     `;
 
     const response = await this.apiClient.call(query, {});
-    return response;
+    return response.markets;
   }
 
   public async getOrderbook(marketCode: string, limit = 50) {
@@ -87,6 +87,6 @@ export default class Markets {
       limit,
     });
 
-    return response;
+    return response.marketOrderBook;
   }
 }

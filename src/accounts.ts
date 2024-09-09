@@ -35,7 +35,7 @@ export default class Accounts {
       assetId,
     });
 
-    return response;
+    return response.wallet;
   }
 
   public async getAccounts() {
@@ -62,6 +62,6 @@ export default class Accounts {
 
     const response = await this.apiClient.call(query, {});
 
-    return response;
+    return response.me.wallets;
   }
 }
