@@ -30,7 +30,7 @@ interface Order {
   limitPrice: number;
 }
 
-export type MarketCodes = [
+export type MarketCodes =
   | 'BTCCLP'
   | 'USDTCLP'
   | 'ETHCLP'
@@ -85,5 +85,4 @@ export type MarketCodes = [
   | 'ETHDAI'
   | 'BTCDAI'
   | 'TRXDAI'
-  | 'BNBDAI'
-];
+  | 'BNBDAI';
