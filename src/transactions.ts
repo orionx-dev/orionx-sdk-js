@@ -1,5 +1,10 @@
 import Api from './api';
-import { GetTransactionsParameters } from './types';
+import {
+  GetTransactionsParameters,
+  Send,
+  Transaction,
+  WithdrawalRequest,
+} from './types';
 
 export default class Transactions {
   private apiClient: Api;
@@ -12,7 +17,7 @@ export default class Transactions {
    * Queries
    */
 
-  public async getTransaction(transactionId: string) {
+  public async getTransaction(transactionId: string): Promise<Transaction> {
     const query = `
       query sdk_getTransaction($_id: ID!) {
         transaction(_id: $_id) {
@@ -113,7 +118,7 @@ export default class Transactions {
     contactId?: string,
     description?: string,
     clientId?: string
-  ) {
+  ): Promise<Send> {
     const query = `
       mutation sdk_send(
         $fromWalletId: ID!
@@ -163,7 +168,7 @@ export default class Transactions {
     walletId: string,
     accountId: string,
     amount: number
-  ) {
+  ): Promise<WithdrawalRequest> {
     const query = `
       mutation sdk_withdrawalRequest(
         $walletId: ID

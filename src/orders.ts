@@ -1,10 +1,19 @@
 import Api from './api';
-import { GetOrdersParameters } from './types';
+import {
+  CancelOrder,
+  GetOrdersParameters,
+  MarketCodes,
+  Order,
+  PlaceLimitOrder,
+  PlaceMarketOrder,
+  PlaceStopLimitOrder,
+  PlaceStopMarketOrder,
+} from './types';
 
 export default class Orders {
   private apiClient: Api;
 
-  constructor(apiClient) {
+  constructor(apiClient: Api) {
     this.apiClient = apiClient;
   }
 
@@ -12,7 +21,7 @@ export default class Orders {
    * Queries
    */
 
-  public async getOrder(orderId: string) {
+  public async getOrder(orderId: string): Promise<Order> {
     const query = `
       query sdk_getOrder($orderId: ID!) {
         order(orderId: $orderId) {
@@ -20,7 +29,8 @@ export default class Orders {
           type
           amount
           limitPrice
-          stopPrice
+          stopPriceDown
+          stopPriceUp
           status
           createdAt
           activatedAt
@@ -86,12 +96,12 @@ export default class Orders {
    * Mutations
    */
   public async placeLimitOrder(
-    marketCode: string,
+    marketCode: MarketCodes,
     amount: number,
     limitPrice: number,
     sell: boolean,
     clientId?: string
-  ) {
+  ): Promise<PlaceLimitOrder> {
     const query = `
       mutation sdk_placeLimitOrder(
         $marketCode: ID
@@ -133,11 +143,11 @@ export default class Orders {
   }
 
   public async placeMarketOrder(
-    marketCode: string,
+    marketCode: MarketCodes,
     amount: number,
     sell: boolean,
     clientId?: string
-  ) {
+  ): Promise<PlaceMarketOrder> {
     const query = `
       mutation sdk_placeMarketOrder(
         $marketCode: ID
@@ -176,14 +186,14 @@ export default class Orders {
   }
 
   public async placeStopLimitOrder(
-    marketCode: string,
+    marketCode: MarketCodes,
     stopPriceUp: number,
     stopPriceDown: number,
     amount: number,
     limitPrice: number,
     sell: boolean,
     clientId?: string
-  ) {
+  ): Promise<PlaceStopLimitOrder> {
     const query = `
       mutation sdk_placeStopLimitOrder(
         $marketCode: ID
@@ -230,13 +240,13 @@ export default class Orders {
   }
 
   public async placeStopMarketOrder(
-    marketCode: string,
+    marketCode: MarketCodes,
     stopPriceUp: number,
     stopPriceDown: number,
     amount: number,
     sell: boolean,
     clientId?: string
-  ) {
+  ): Promise<PlaceStopMarketOrder> {
     const query = `
       mutation sdk_placeStopMarketOrder(
         $marketCode: ID
@@ -280,7 +290,7 @@ export default class Orders {
     return response.placeStopMarketOrder;
   }
 
-  public async cancelOrder(orderId: string) {
+  public async cancelOrder(orderId: string): Promise<CancelOrder> {
     const query = `
       mutation sdk_cancelOrder($orderId: ID!) {
         cancelOrder(orderId: $orderId) {

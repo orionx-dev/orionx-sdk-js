@@ -1,4 +1,5 @@
 import Api from './api';
+import { Market, MarketCodes, OrderBook } from './types';
 
 export default class Markets {
   private apiClient: Api;
@@ -11,7 +12,7 @@ export default class Markets {
    * Queries
    */
 
-  public async getMarket(code: string) {
+  public async getMarket(code: MarketCodes): Promise<Market> {
     const query = `
       query sdk_market($code: ID) {
         market(code: $code) {
@@ -41,7 +42,7 @@ export default class Markets {
     return response.market;
   }
 
-  public async getMarkets() {
+  public async getMarkets(): Promise<Market[]> {
     const query = `
       query sdk_markets {
         markets {
@@ -65,7 +66,10 @@ export default class Markets {
     return response.markets;
   }
 
-  public async getOrderbook(marketCode: string, limit = 50) {
+  public async getOrderbook(
+    marketCode: MarketCodes,
+    limit = 50
+  ): Promise<OrderBook> {
     const query = `
       query sdk_marketOrderBook($marketCode: ID!, $limit: Int) {
         marketOrderBook(marketCode: $marketCode, limit: $limit) {
