@@ -34,7 +34,7 @@ After that we are ready to go
 
 ## Code examples
 
-### How to initialize the SDK
+### How to initialize SDK
 
 ```js
 // App.ts
@@ -47,11 +47,10 @@ export const orionx = new Orionx(
   apiKey,
   secretKey,
   'https://api.orionx.com/graphql',
-});
-
+);
 ```
 
----
+## Methods
 
 ### User:
 
