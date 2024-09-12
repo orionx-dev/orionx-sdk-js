@@ -13,36 +13,6 @@ export interface AvailableNetwork {
 }
 
 export interface Currency {
-  code: Currencies;
+  code: string;
   units: number;
 }
-
-export type Currencies =
-  | 'CLP'
-  | 'COP'
-  | 'MXN'
-  | 'USD'
-  | 'USDT'
-  | 'BTC'
-  | 'DAI'
-  | 'ETH'
-  | 'BNB'
-  | 'LTC'
-  | 'XRP'
-  | 'XLM'
-  | 'BCH'
-  | 'CHA'
-  | 'LUK'
-  | 'DASH'
-  | 'TRX'
-  | 'EOS'
-  | 'DOT'
-  | 'ADA'
-  | 'SOL'
-  | 'MATIC'
-  | 'AVAX'
-  | 'PEN'
-  | 'USDC'
-  | 'XAUT'
-  | 'EURT'
-  | 'ACAI';

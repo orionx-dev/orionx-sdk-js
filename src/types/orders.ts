@@ -1,6 +1,3 @@
-import { Currencies } from './accounts';
-import { MarketCodes } from './markets';
-
 export interface GetOrdersParameters {
   filter?: string;
   marketCode?: string;
@@ -15,12 +12,11 @@ export interface GetOrdersParameters {
 }
 
 export interface Order {
-  _id: string;
   type: string;
   amount: number;
   limitPrice: number;
-  stopPriceDown: null;
-  stopPriceUp: null;
+  stopPriceDown: number | null;
+  stopPriceUp: number | null;
   status: string;
   createdAt: number;
   activatedAt: number;
@@ -30,13 +26,13 @@ export interface Order {
 }
 
 interface MarketData {
-  code: MarketCodes;
+  code: string;
   mainCurrency: CurrencyData;
   secondaryCurrency: CurrencyData;
 }
 
 interface CurrencyData {
-  code: Currencies;
+  code: string;
   units: number;
 }
 
@@ -85,7 +81,7 @@ export interface PlaceStopMarketOrder {
 }
 
 interface Market {
-  code: MarketCodes;
+  code: string;
 }
 
 export interface CancelOrder {

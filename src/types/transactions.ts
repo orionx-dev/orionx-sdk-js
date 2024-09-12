@@ -1,6 +1,3 @@
-import { Currencies } from './accounts';
-import { MarketCodes } from './markets';
-
 export interface GetTransactionsParameters {
   filter?: string;
   walletId?: string;
@@ -22,7 +19,6 @@ export interface GetTransactionsParameters {
 }
 
 export interface Transaction {
-  _id: string;
   amount: number;
   balance: number;
   commission: number;
@@ -30,23 +26,23 @@ export interface Transaction {
   date: number;
   type: string;
   adds: boolean;
-  hash: null;
-  description: null;
+  hash: string | null;
+  description: string | null;
   market: Market;
   price: number;
   cost: number;
   explorerURL: null;
   isInside: null;
-  meta: null;
+  meta: Meta;
 }
 
 interface Currency {
-  code: Currencies;
+  code: string;
   units: number;
 }
 
 interface Market {
-  code: MarketCodes;
+  code: string;
   mainCurrency: Currency;
   secondaryCurrency: Currency;
 }
@@ -69,4 +65,8 @@ export interface WithdrawalRequest {
   date: number;
   type: string;
   description: string;
+}
+
+export interface Meta {
+  status: string | null;
 }
