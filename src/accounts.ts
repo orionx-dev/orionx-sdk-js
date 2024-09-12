@@ -1,5 +1,5 @@
 import Api from './api';
-import { Account, Currencies } from './types';
+import { Account } from './types';
 
 export default class Accounts {
   private apiClient: Api;
@@ -12,7 +12,7 @@ export default class Accounts {
    * Queries
    */
 
-  public async getAccount(assetId: Currencies): Promise<Account> {
+  public async getAccount(assetId: string): Promise<Account> {
     const query = `
       query sdk_getAccount($assetId: ID!) {
         wallet(code: $assetId) {

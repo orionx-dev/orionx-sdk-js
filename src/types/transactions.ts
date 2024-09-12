@@ -1,6 +1,3 @@
-import { Currencies } from './accounts';
-import { MarketCodes } from './markets';
-
 export interface GetTransactionsParameters {
   filter?: string;
   walletId?: string;
@@ -40,12 +37,12 @@ export interface Transaction {
 }
 
 interface Currency {
-  code: Currencies;
+  code: string;
   units: number;
 }
 
 interface Market {
-  code: MarketCodes;
+  code: string;
   mainCurrency: Currency;
   secondaryCurrency: Currency;
 }

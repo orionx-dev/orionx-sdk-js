@@ -1,7 +1,5 @@
-import { Currencies } from './accounts';
-
 export interface Market {
-  code: MarketCodes;
+  code: string;
   name: string;
   mainCurrency: Currency;
   secondaryCurrency: Currency;
@@ -13,7 +11,7 @@ interface LastTrade {
 }
 
 interface Currency {
-  code: Currencies;
+  code: string;
   name: string;
   units: number;
 }
@@ -29,60 +27,3 @@ interface Order {
   amount: number;
   limitPrice: number;
 }
-
-export type MarketCodes =
-  | 'BTCCLP'
-  | 'USDTCLP'
-  | 'ETHCLP'
-  | 'TRXCLP'
-  | 'USDCCLP'
-  | 'ACAICLP'
-  | 'EURTCLP'
-  | 'XAUTCLP'
-  | 'XLMCLP'
-  | 'XRPCLP'
-  | 'BNBCLP'
-  | 'DAICLP'
-  | 'LTCCLP'
-  | 'BCHCLP'
-  | 'DASHCLP'
-  | 'EOSCLP'
-  | 'DOTCLP'
-  | 'ADACLP'
-  | 'SOLCLP'
-  | 'MATICCLP'
-  | 'AVAXCLP'
-  | 'CHACLP'
-  | 'LUKCLP'
-  | 'BTCMXN'
-  | 'ETHMXN'
-  | 'XRPMXN'
-  | 'XLMMXN'
-  | 'TRXMXN'
-  | 'BNBMXN'
-  | 'DAIMXN'
-  | 'LTCMXN'
-  | 'BCHMXN'
-  | 'ETHBTC'
-  | 'XRPBTC'
-  | 'XLMBTC'
-  | 'TRXBTC'
-  | 'BNBBTC'
-  | 'LTCBTC'
-  | 'CHABTC'
-  | 'BCHBTC'
-  | 'DASHBTC'
-  | 'EOSBTC'
-  | 'BTCUSDT'
-  | 'ETHUSDT'
-  | 'EOSUSDT'
-  | 'DOTUSDT'
-  | 'ADAUSDT'
-  | 'SOLUSDT'
-  | 'MATICUSDT'
-  | 'AVAXUSDT'
-  | 'USDCUSDT'
-  | 'ETHDAI'
-  | 'BTCDAI'
-  | 'TRXDAI'
-  | 'BNBDAI';

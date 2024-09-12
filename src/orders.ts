@@ -2,7 +2,6 @@ import Api from './api';
 import {
   CancelOrder,
   GetOrdersParameters,
-  MarketCodes,
   Order,
   PlaceLimitOrder,
   PlaceMarketOrder,
@@ -101,7 +100,7 @@ export default class Orders {
    * Mutations
    */
   public async placeLimitOrder(
-    marketCode: MarketCodes,
+    marketCode: string,
     amount: number,
     limitPrice: number,
     sell: boolean,
@@ -148,7 +147,7 @@ export default class Orders {
   }
 
   public async placeMarketOrder(
-    marketCode: MarketCodes,
+    marketCode: string,
     amount: number,
     sell: boolean,
     clientId?: string
@@ -191,7 +190,7 @@ export default class Orders {
   }
 
   public async placeStopLimitOrder(
-    marketCode: MarketCodes,
+    marketCode: string,
     stopPriceUp: number,
     stopPriceDown: number,
     amount: number,
@@ -245,7 +244,7 @@ export default class Orders {
   }
 
   public async placeStopMarketOrder(
-    marketCode: MarketCodes,
+    marketCode: string,
     stopPriceUp: number,
     stopPriceDown: number,
     amount: number,

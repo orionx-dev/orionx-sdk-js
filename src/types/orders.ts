@@ -1,6 +1,3 @@
-import { Currencies } from './accounts';
-import { MarketCodes } from './markets';
-
 export interface GetOrdersParameters {
   filter?: string;
   marketCode?: string;
@@ -29,13 +26,13 @@ export interface Order {
 }
 
 interface MarketData {
-  code: MarketCodes;
+  code: string;
   mainCurrency: CurrencyData;
   secondaryCurrency: CurrencyData;
 }
 
 interface CurrencyData {
-  code: Currencies;
+  code: string;
   units: number;
 }
 
@@ -84,7 +81,7 @@ export interface PlaceStopMarketOrder {
 }
 
 interface Market {
-  code: MarketCodes;
+  code: string;
 }
 
 export interface CancelOrder {
