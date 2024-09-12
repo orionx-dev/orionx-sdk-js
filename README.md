@@ -342,32 +342,16 @@ const transaction = await orionx.transactions.getTransaction(transactionId)
 
 Alternatively you can request the information of all the transactions associated to your user with the `getTransactions` method. This method returns an array of `Transaction` types.
 
-```js
-// We can use these parameters within the getTransactions method to filter results. This is optional, it is not mandatory to send filters
-
-interface GetTransactionsParameters {
-  filter?: string;
-  walletId?: string;
-  types?: Array<
-    | 'trade-in'
-    | 'trade-out'
-    | 'send'
-    | 'recieve'
-    | 'devolution'
-    | 'revert'
-    | 'rebate'
-  >;
-  initPeriod?: Date;
-  finalPeriod?: Date;
-  page?: number;
-  limit?: number;
-  sortBy?: string;
-  sortType?: 'ASC' | 'DESC';
-}
-```
+Note: Sending an object with filters is optional. You can call the `getTransactions` method without parameters to get all the results.
 
 ```js
-const transactions = await orionx.accounts.getTransactions(); // Here we can use the parameters that we want to filter results
+const transactions = await orionx.accounts.getTransactions({
+  walletId: "my-wallet-id",
+  types: ["receive", "revert"],
+  page: 2,
+  limit: 4,
+  sortType: "DESC"
+});
 
 // Example response:
 [
@@ -377,7 +361,7 @@ const transactions = await orionx.accounts.getTransactions(); // Here we can use
       commission: 250,
       currency: { "code": "BTC", "units": 8 },
       date: 1726065370624,
-      type: 'trade-in',
+      type: 'receive',
       adds: true,
       hash: null,
       description: null,
@@ -398,7 +382,7 @@ const transactions = await orionx.accounts.getTransactions(); // Here we can use
       commission: 0,
       currency: { "code": "ETH", "units": 8 },
       date: 1726065374255,
-      type: 'discount',
+      type: 'revert',
       adds: false,
       hash: null,
       description: null,
