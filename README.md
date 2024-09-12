@@ -46,7 +46,7 @@ const secretKey = 'your-secret-key';
 export const orionx = new Orionx(
   apiKey,
   secretKey,
-  'https://api.orionx.com/graphql',
+  'https://api.orionx.com/graphql'
 );
 ```
 
@@ -338,4 +338,57 @@ const transaction = await orionx.transactions.getTransaction(transactionId)
   isInside: null,
   meta: null
 }
+```
+
+Alternatively you can request the information of all the transactions associated to your user with the `getTransactions` method. This method returns an array of `Transaction` types.
+
+```js
+const transactions = await orionx.accounts.getTransactions();
+
+// Example response:
+[
+    {
+      amount: 49750,
+      balance: 999500,
+      commission: 250,
+      currency: { "code": "BTC", "units": 8 },
+      date: 1726065370624,
+      type: 'trade-in',
+      adds: true,
+      hash: null,
+      description: null,
+      market: {
+        "code": "BTCCLP",
+        "mainCurrency": { "code": "BTC", "units": 8 },
+        "secondaryCurrency": { "code": "CLP", "units": 0 }
+      },
+      price: null,
+      cost: 49750,
+      explorerURL: null,
+      isInside: null,
+      meta: null
+    },
+    {
+      amount: 50000,
+      balance: 999500,
+      commission: 0,
+      currency: { "code": "ETH", "units": 8 },
+      date: 1726065374255,
+      type: 'discount',
+      adds: false,
+      hash: null,
+      description: null,
+      market: {
+        "code": "ETHCLP",
+        "mainCurrency": { "code": "ETH", "units": 8 },
+        "secondaryCurrency": { "code": "CLP", "units": 0 }
+      },
+      price: null,
+      cost: null,
+      explorerURL: null,
+      isInside: null,
+      meta: null
+    },
+  ... more transactions ...
+]
 ```
