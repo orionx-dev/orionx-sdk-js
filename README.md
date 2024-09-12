@@ -67,12 +67,12 @@ const me = await orionx.user.getMe();
   name: 'Test User',
   profile: {
     fullName: 'Test Orionx User',
-    phone: +569 88888888,
+    phone: '+569 88888888',
     kycVerified: true,
-    birthdate: 01/30/2000,
+    birthdate: '01/30/2000',
     countryCode: 'CL',
-    occupation: Developer,
-    address: Independencia 2404
+    occupation: 'Developer',
+    address: 'Independencia 2404'
   }
 }
 ```
@@ -289,7 +289,7 @@ This interface represents the structure of a `Send` object, which contains detai
 const walletId = "2345yuiop" // You can get it with getAccount method
 const network = "ETH"
 const amount = 1000000
-const contactId = ""
+const contactId = "uuid-contact-id"
 const transaction = await orionx.transactions.send(walletId, network, amount, contactId)
 
 // Example response:
