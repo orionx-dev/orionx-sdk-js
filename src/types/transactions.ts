@@ -22,7 +22,6 @@ export interface GetTransactionsParameters {
 }
 
 export interface Transaction {
-  _id: string;
   amount: number;
   balance: number;
   commission: number;
@@ -30,14 +29,14 @@ export interface Transaction {
   date: number;
   type: string;
   adds: boolean;
-  hash: null;
-  description: null;
+  hash: string | null;
+  description: string | null;
   market: Market;
   price: number;
   cost: number;
   explorerURL: null;
   isInside: null;
-  meta: null;
+  meta: Meta;
 }
 
 interface Currency {
@@ -69,4 +68,8 @@ export interface WithdrawalRequest {
   date: number;
   type: string;
   description: string;
+}
+
+export interface Meta {
+  status: string | null;
 }

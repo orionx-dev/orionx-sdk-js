@@ -15,12 +15,11 @@ export interface GetOrdersParameters {
 }
 
 export interface Order {
-  _id: string;
   type: string;
   amount: number;
   limitPrice: number;
-  stopPriceDown: null;
-  stopPriceUp: null;
+  stopPriceDown: number | null;
+  stopPriceUp: number | null;
   status: string;
   createdAt: number;
   activatedAt: number;
