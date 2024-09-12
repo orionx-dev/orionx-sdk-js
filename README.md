@@ -343,7 +343,30 @@ const transaction = await orionx.transactions.getTransaction(transactionId)
 Alternatively you can request the information of all the transactions associated to your user with the `getTransactions` method. This method returns an array of `Transaction` types.
 
 ```js
-const transactions = await orionx.accounts.getTransactions();
+// We can use these parameters within the getTransactions method to filter results
+interface GetTransactionsParameters {
+  filter?: string;
+  walletId?: string;
+  types?: Array<
+    | 'trade-in'
+    | 'trade-out'
+    | 'send'
+    | 'recieve'
+    | 'devolution'
+    | 'revert'
+    | 'rebate'
+  >;
+  initPeriod?: Date;
+  finalPeriod?: Date;
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  sortType?: string;
+}
+```
+
+```js
+const transactions = await orionx.accounts.getTransactions(); // Here we can use the parameters that we want to filter results
 
 // Example response:
 [
