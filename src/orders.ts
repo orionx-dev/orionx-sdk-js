@@ -1,10 +1,18 @@
 import Api from './api';
-import { GetOrdersParameters } from './types';
+import {
+  CancelOrder,
+  GetOrdersParameters,
+  Order,
+  PlaceLimitOrder,
+  PlaceMarketOrder,
+  PlaceStopLimitOrder,
+  PlaceStopMarketOrder,
+} from './types';
 
 export default class Orders {
   private apiClient: Api;
 
-  constructor(apiClient) {
+  constructor(apiClient: Api) {
     this.apiClient = apiClient;
   }
 
@@ -12,7 +20,7 @@ export default class Orders {
    * Queries
    */
 
-  public async getOrder(orderId: string) {
+  public async getOrder(orderId: string): Promise<Order & { _id: string }> {
     const query = `
       query sdk_getOrder($orderId: ID!) {
         order(orderId: $orderId) {
@@ -20,7 +28,8 @@ export default class Orders {
           type
           amount
           limitPrice
-          stopPrice
+          stopPriceDown
+          stopPriceUp
           status
           createdAt
           activatedAt
@@ -48,31 +57,36 @@ export default class Orders {
     return response.order;
   }
 
-  public async getOrders(parameters: GetOrdersParameters) {
+  public async getOrders(
+    parameters: GetOrdersParameters
+  ): Promise<{ _id: string; items: Order[] }> {
     const query = `
-      query sdk_getOrders($filter: String, $marketCode: String, $onlyOpen: Boolean, $onlyClosed: Boolean, $currencyCode: String, $onlyFilled: Boolean, $page: Int, $limit: Int, $sortBy: String, $sortType: String) {
+      query sdk_getOrders($filter: String, $marketCode: ID, $onlyOpen: Boolean, $onlyClosed: Boolean, $currencyCode: ID, $onlyFilled: Boolean, $page: Int, $limit: Int, $sortBy: String, $sortType: SortType) {
         orders(filter: $filter, marketCode: $marketCode, onlyOpen: $onlyOpen, onlyClosed: $onlyClosed, currencyCode: $currencyCode, onlyFilled: $onlyFilled, page: $page, limit: $limit, sortBy: $sortBy, sortType: $sortType) {
           _id
-          type
-          amount
-          limitPrice
-          stopPrice
-          status
-          createdAt
-          activatedAt
-          closedAt
-          market {
-            code
-            mainCurrency {
+          items {
+            type
+            amount
+            limitPrice
+            stopPriceUp
+            stopPriceDown
+            status
+            createdAt
+            activatedAt
+            closedAt
+            market {
               code
-              units
+              mainCurrency {
+                code
+                units
+              }
+              secondaryCurrency {
+                code
+                units
+              }
             }
-            secondaryCurrency {
-              code
-              units
-            }
+            clientId
           }
-          clientId
         }
       }
     `;
@@ -91,7 +105,7 @@ export default class Orders {
     limitPrice: number,
     sell: boolean,
     clientId?: string
-  ) {
+  ): Promise<PlaceLimitOrder> {
     const query = `
       mutation sdk_placeLimitOrder(
         $marketCode: ID
@@ -137,7 +151,7 @@ export default class Orders {
     amount: number,
     sell: boolean,
     clientId?: string
-  ) {
+  ): Promise<PlaceMarketOrder> {
     const query = `
       mutation sdk_placeMarketOrder(
         $marketCode: ID
@@ -183,7 +197,7 @@ export default class Orders {
     limitPrice: number,
     sell: boolean,
     clientId?: string
-  ) {
+  ): Promise<PlaceStopLimitOrder> {
     const query = `
       mutation sdk_placeStopLimitOrder(
         $marketCode: ID
@@ -236,7 +250,7 @@ export default class Orders {
     amount: number,
     sell: boolean,
     clientId?: string
-  ) {
+  ): Promise<PlaceStopMarketOrder> {
     const query = `
       mutation sdk_placeStopMarketOrder(
         $marketCode: ID
@@ -280,7 +294,7 @@ export default class Orders {
     return response.placeStopMarketOrder;
   }
 
-  public async cancelOrder(orderId: string) {
+  public async cancelOrder(orderId: string): Promise<CancelOrder> {
     const query = `
       mutation sdk_cancelOrder($orderId: ID!) {
         cancelOrder(orderId: $orderId) {

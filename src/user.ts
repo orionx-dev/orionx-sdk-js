@@ -1,4 +1,5 @@
 import Api from './api';
+import { Me } from './types';
 
 export default class User {
   public userId: string;
@@ -22,7 +23,7 @@ export default class User {
     return response.me?._id;
   }
 
-  public async getMe() {
+  public async getMe(): Promise<Me> {
     const query = `
       query sdk_getMe {
         me {

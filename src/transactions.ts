@@ -1,5 +1,10 @@
 import Api from './api';
-import { GetTransactionsParameters } from './types';
+import {
+  GetTransactionsParameters,
+  Send,
+  Transaction,
+  WithdrawalRequest,
+} from './types';
 
 export default class Transactions {
   private apiClient: Api;
@@ -12,7 +17,9 @@ export default class Transactions {
    * Queries
    */
 
-  public async getTransaction(transactionId: string) {
+  public async getTransaction(
+    transactionId: string
+  ): Promise<Transaction & { _id: string }> {
     const query = `
       query sdk_getTransaction($_id: ID!) {
         transaction(_id: $_id) {
@@ -58,40 +65,44 @@ export default class Transactions {
     return response.transaction;
   }
 
-  public async getTransactions(parameters: GetTransactionsParameters) {
+  public async getTransactions(
+    parameters: GetTransactionsParameters
+  ): Promise<{ _id: string; items: Transaction[] }> {
     const query = `
-      query sdk_getTransactions($filter: String, $walletId: String, $types: [String], $initPeriod: Date, $finalPeriod: Date, $page: Int, $limit: Int, $sortBy: String, $sortType: String) {
+      query sdk_getTransactions($filter: String, $walletId: ID, $types: [String], $initPeriod: Date, $finalPeriod: Date, $page: Int, $limit: Int, $sortBy: String, $sortType: SortType) {
         transactions(filter: $filter, walletId: $walletId, types: $types, initPeriod: $initPeriod, finalPeriod: $finalPeriod, page: $page, limit: $limit, sortBy: $sortBy, sortType: $sortType) {
           _id
-          amount
-          balance
-          commission
-          currency {
-            code
-            units
-          }
-          date
-          type
-          adds
-          hash
-          description
-          market {
-            code
-            mainCurrency {
+          items {
+            amount
+            balance
+            commission
+            currency {
               code
               units
             }
-            secondaryCurrency {
+            date
+            type
+            adds
+            hash
+            description
+            market {
               code
-              units
+              mainCurrency {
+                code
+                units
+              }
+              secondaryCurrency {
+                code
+                units
+              }
             }
-          }
-          price
-          cost
-          explorerURL
-          isInside
-          meta {
-            status
+            price
+            cost
+            explorerURL
+            isInside
+            meta {
+              status
+            }
           }
         }
       }
@@ -113,7 +124,7 @@ export default class Transactions {
     contactId?: string,
     description?: string,
     clientId?: string
-  ) {
+  ): Promise<Send> {
     const query = `
       mutation sdk_send(
         $fromWalletId: ID!
@@ -163,7 +174,7 @@ export default class Transactions {
     walletId: string,
     accountId: string,
     amount: number
-  ) {
+  ): Promise<WithdrawalRequest> {
     const query = `
       mutation sdk_withdrawalRequest(
         $walletId: ID
