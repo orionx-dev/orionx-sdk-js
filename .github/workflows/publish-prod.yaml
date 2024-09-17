@@ -1,28 +1,24 @@
 ## Job to publish to npm on release
+name: Publish Package to npmjs
 on:
   release:
-    types: [created]
-name: Publish to npm
+    types: [published]
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          cache: 'npm'
-          node-version: 20
+          node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm run build
 
-      - name: build
-        run: npm run build
-
-      - name: Publish to npm
-        run: npm publish
+      - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
