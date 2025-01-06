@@ -121,16 +121,7 @@ export default class Orders {
           sell: $sell
           clientId: $clientId
         ) {
-          _id
-          type
-          amount
-          limitPrice
-          status
-          createdAt
-          market {
-            code
-          }
-          clientId
+          orderId
         }
       }
     `;
@@ -165,16 +156,7 @@ export default class Orders {
           sell: $sell
           clientId: $clientId
         ) {
-          _id
-          type
-          amount
-          limitPrice
-          status
-          createdAt
-          market {
-            code
-          }
-          clientId
+          orderId
         }
       }
     `;
@@ -217,16 +199,7 @@ export default class Orders {
           sell: $sell
           clientId: $clientId
         ) {
-          _id
-          type
-          amount
-          limitPrice
-          status
-          createdAt
-          market {
-            code
-          }
-          clientId
+          orderId
         }
       }
     `;
@@ -268,16 +241,7 @@ export default class Orders {
           sell: $sell
           clientId: $clientId
         ) {
-          _id
-          type
-          amount
-          limitPrice
-          status
-          createdAt
-          market {
-            code
-          }
-          clientId
+          orderId
         }
       }
     `;
