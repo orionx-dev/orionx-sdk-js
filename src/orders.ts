@@ -121,7 +121,7 @@ export default class Orders {
           sell: $sell
           clientId: $clientId
         ) {
-          orderId
+          _id
         }
       }
     `;
@@ -156,7 +156,7 @@ export default class Orders {
           sell: $sell
           clientId: $clientId
         ) {
-          orderId
+          _id
         }
       }
     `;
@@ -199,7 +199,7 @@ export default class Orders {
           sell: $sell
           clientId: $clientId
         ) {
-          orderId
+          _id
         }
       }
     `;
@@ -241,7 +241,7 @@ export default class Orders {
           sell: $sell
           clientId: $clientId
         ) {
-          orderId
+          _id
         }
       }
     `;

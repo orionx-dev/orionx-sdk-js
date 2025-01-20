@@ -37,7 +37,7 @@ interface CurrencyData {
 }
 
 export interface PlaceLimitOrder {
-  orderId: string;
+  _id: string;
 }
 
 export interface PlaceStopLimitOrder {
