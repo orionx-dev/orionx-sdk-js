@@ -22,6 +22,7 @@ export default class Accounts {
             units
           }
           balance
+          availableBalance
           availableNetworks {
             code
           }
@@ -49,6 +50,7 @@ export default class Accounts {
               units
             }
             balance
+            availableBalance
             availableNetworks {
               code
             }
