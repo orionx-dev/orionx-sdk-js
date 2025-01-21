@@ -38,13 +38,6 @@ interface CurrencyData {
 
 export interface PlaceLimitOrder {
   _id: string;
-  type: string;
-  amount: number;
-  limitPrice: number;
-  status: string;
-  createdAt: number;
-  market: Market;
-  clientId: null;
 }
 
 export interface PlaceStopLimitOrder {

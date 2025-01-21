@@ -122,15 +122,6 @@ export default class Orders {
           clientId: $clientId
         ) {
           _id
-          type
-          amount
-          limitPrice
-          status
-          createdAt
-          market {
-            code
-          }
-          clientId
         }
       }
     `;
@@ -166,15 +157,6 @@ export default class Orders {
           clientId: $clientId
         ) {
           _id
-          type
-          amount
-          limitPrice
-          status
-          createdAt
-          market {
-            code
-          }
-          clientId
         }
       }
     `;
@@ -218,15 +200,6 @@ export default class Orders {
           clientId: $clientId
         ) {
           _id
-          type
-          amount
-          limitPrice
-          status
-          createdAt
-          market {
-            code
-          }
-          clientId
         }
       }
     `;
@@ -269,15 +242,6 @@ export default class Orders {
           clientId: $clientId
         ) {
           _id
-          type
-          amount
-          limitPrice
-          status
-          createdAt
-          market {
-            code
-          }
-          clientId
         }
       }
     `;
